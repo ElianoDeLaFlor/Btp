@@ -6,8 +6,8 @@
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    /*padding-left: 15px;
-    padding-right: 15px;*/
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .page {
     padding: 100px 50px 20px 50px;
@@ -35,7 +35,7 @@ textarea {
 }
 .WayFrmTop{
     margin-top:40px;
-    margin-right:5px;
+    margin:0px;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
