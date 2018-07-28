@@ -7,12 +7,13 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Styles/material.css" rel="stylesheet"/>
     <link href="~/Styles/Bootstrap_journal.css" rel="stylesheet"/>
+    
     <link href="~/Styles/Site.css" rel="stylesheet"/>
     <link href="~/Styles/Slide.css" rel="stylesheet"/>
 </head>
 <body id="body">
-    <div id="page" class="page" style="border:solid 1px #072ccf">
-        <div class="Conteneur" style="background-color:white;border:solid 1px #15a5e7">
+    <div id="page" class="page" >
+        <div class="Conteneur" style="background-color:white">
             <div id="titlebar" class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
@@ -55,11 +56,11 @@
                 </div>
             </div>
 
-            <div class="body-content" style="border:solid 1px black">
+            <div class="body-content">
                 @RenderBody()
                 <hr/>
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - Karl BTP</p>
+                    <p>&copy; @DateTime.Now.Year - Kale BTP</p>
                 </footer>
             </div>
         </div>
