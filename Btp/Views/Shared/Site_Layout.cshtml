@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Styles/material.css" rel="stylesheet"/>
+    <link href="~/Styles/Bootstrap_journal.css" rel="stylesheet"/>
+    <link href="~/Styles/Site.css" rel="stylesheet"/>
+    <link href="~/Styles/Slide.css" rel="stylesheet"/>
+</head>
+<body id="body">
+    <div id="page" class="page" style="border:solid 1px #072ccf">
+        <div class="Conteneur" style="background-color:white;border:solid 1px #15a5e7">
+            <div id="titlebar" class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("Karl BTP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notre Société<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Société</a></li>
+                                    <li><a href="#">Valeur</a></li>
+                                    <li><a href="#">L'équipe</a></li>
+                                    <li><a href="#">Historique</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nos Métiers<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Gros oeuvre</a></li>
+                                    <li><a href="#">Entreprise Génarale</a></li>
+                                    <li><a href="#">Réhabilitation</a></li>
+                                    <li><a href="#">Génie Civil Industries</a></li>
+                                    <li><a href="#">Travaux Services</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Nos Réalisations</a></li>
+                            <li><a href="#">Nos Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Actualité</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Recrutement</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-content" style="border:solid 1px black">
+                @RenderBody()
+                <hr/>
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Karl BTP</p>
+                </footer>
+            </div>
+        </div>
+        @*<hr />
+        <footer style="position:absolute;" class="bg-transparent">
+            <p>&copy; @DateTime.Now.Year - Karl BTP</p>
+        </footer>*@
+        <script src="~/Script/JQueryB.js" type="text/javascript"></script>
+        <script src="~/Script/bootstrap.min.js" type="text/javascript"></script>
+        <script src="~/Script/material.min.js" type="text/javascript"></script>
+        <script src="~/Script/Slide_JQuery.min.js" type="text/javascript"></script>
+        <script src="~/Script/Slide.js" type="text/javascript"></script>
+        <script src="~/Script/SliderQuery.js" type="text/javascript"></script>
+        <script src="~/Script/SiteJs.js"></script>
+    </div>
+</body>
+</html>
