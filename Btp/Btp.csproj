@@ -106,8 +106,9 @@
     <Content Include="Images\7.jpg" />
     <Content Include="Images\img\btns-next-prev.png" />
     <Content Include="Images\img\pagination.png" />
-    <Content Include="Script\bootstrap.js" />
     <Content Include="Script\bootstrap.min.js" />
+    <Content Include="Script\carousel.js" />
+    <Content Include="Script\jquery3.min.js" />
     <Content Include="Script\SiteJs.js" />
     <Content Include="Script\Slide.js" />
     <Content Include="Script\SliderQuery.js" />
@@ -140,6 +141,7 @@
     <Content Include="Views\Shared\Site_Layout.cshtml" />
     <Content Include="Views\Home\View.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\NotreSociete\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -149,7 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NotreSociete\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
