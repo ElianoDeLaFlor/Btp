@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Styles/material.css" rel="stylesheet"/>
     <link href="~/Styles/Bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/GlyphIcon.css" rel="stylesheet" />
     
     <link href="~/Styles/Site.css" rel="stylesheet"/>
     <link href="~/Styles/Slide.css" rel="stylesheet"/>
@@ -14,42 +15,133 @@
         .dropdown-item:hover{
             background-color:salmon;
         }
+        .nav-item{
+            color:red;
+        }
         .nav-link{
             font-size:larger;
-            font-weight:700;
+            font-weight:700;   
+            color:rebeccapurple;
         }
+        .btn-primary:hover{
+            background-color:darksalmon;
+            border-color:darksalmon;
+        }
+        
     </style>
 </head>
 <body id="body">
     <div id="page" class="page" >
+        <div>
+            <img src="~/Img/bg_Header.png" />
+        </div>
         <div class="Conteneur" style="background-color:white">
-            <div id="titlebar" class="navbar navbar-inverse navbar-fixed-top">
+            <div>
                 <div class="container">
                     <!--menu-->
-                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: darksalmon">
-                        @Html.ActionLink("Kale BTP","Index","Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <nav id="titlebar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: salmon"><span class="glyphicon glyphicon-home"></span>&nbsp;
+                        @Html.ActionLink("KC.BTP","Index","Home", new { area = "" }, new { @class = "navbar-brand" })
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
-                              <!--/////////////-->
+                                <!--menu notre société-->
                                 <li class=" nav-item dropdown" >
-                                    <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notre société</a>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_ns" onmouseover="drop('menu_ns')">NOTRE SOCIETE</a>
+                                    <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#" id="telink">Tourisme Entreprise</a>
+                                    <a class="dropdown-item" href="#">SOCIETE</a>
+                                    <!--Sub menu-->
+                                    <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#" id="tgplink">Tourisme Grand-public</a>
+                                    <a class="dropdown-item" href="#">AFFILIATION</a>
+                                    <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#" id="tslink">Tourisme Scolaire</a>
+                                    <a class="dropdown-item" href="#">MATERIELS DISPONIBLE</a>
+                                    <div class="dropdown-divider"></div>
                                 </li>
-                                        <li><a class="dropdown-item" href="#" id="collink">Colonie des vaccances</a></li>
+                                <li><a class="dropdown-item" href="#">VALEURS</a>
+                                    <div class="dropdown-divider"></div>
+                                </li>
+                               <li>
+                                  <a class="dropdown-item" href="#">L'EQUIPE
+                                   </a><div class="dropdown-divider"></div>
+                               </li>
+                               <li>
+                                   <a class="dropdown-item" href="#">HISTORIQUE
+                                   </a>
+                               </li>
+                              </ul>
+                                </li>
+                                <!--end menu notre societe-->
+
+                                <!--menu domaine d'activité-->
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="menu_da" onmouseover="drop('menu_da')">DOMAINE D'ACTIVITE</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">SOUS-TRAITANCES</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">REHABILITATION</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">GENIE CIVIL</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">ENTREPRISE GENERALE</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">GROS-ŒUVRES</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">PARTENARIAT</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">GENIE ELECTRIQUE</a>
+                                        </li>
                                     </ul>
                                 </li>
+                                <!--end menu domaine d'activité-->
+
+                                <!--menu nos réalisation-->
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">NOS REALISATIONS</a>
+                                </li>
+                                <!--end menu nos réalisations-->
+
+                                <!--menu nos services-->
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">NOS SERVICES</a>
+                                </li>
+                                <!--end menu nos services-->
+
+                                <!--menu recrutement-->
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="menu_re" onmouseover="drop('menu_re')">RECRUTEMENT</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">OFFRE D'EMPLOI</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">OFFRE DE STAGE</a><div class="dropdown-divider"></div>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">CANDIDATURE SPONTANEE</a>
+                                        </li>
+                                    </ul>
+</li>
+                                <!--end menu recrutement-->
+
+                                <!--<menu contact-->
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">CONTACT</a>
+                                </li>
+                                <!--end menu contact-->
                             </ul>
                             
                         </div>
@@ -63,11 +155,18 @@
                 
                 <hr/>
                 <footer>
-                    <p>&copy; @DateTime.Now.Year - Kale BTP</p>
+                    <p>&copy; @DateTime.Now.Year - Kale Construction</p>
                 </footer>
             </div>
         </div>
-       
+        <script>
+            //dropdown the menu on mouseover
+            function drop(id) {
+                var v = document.getElementById(id);
+                v.click();
+            }
+            
+        </script>
         @RenderSection("scriptsection",false)
         
     </div>

@@ -10,8 +10,8 @@
     padding-right: 15px;
 }
 .page {
-    padding: 100px 50px 20px 50px;
-    background-color: rgba(128, 128, 128, 0.52);
+    padding: 50px 50px 20px 50px;
+    background-color: rgba(128, 128, 128, 0.52);*/
 }
 .Conteneur {
     padding:1px /*0px 0px 0px*/;
@@ -41,6 +41,28 @@ textarea {
 .WayFrmTop{
     margin-top:40px;
     margin:0px;
+}
+.CardStyle{
+    width:auto;
+    height:auto;
+}
+.Dropdown-submenu{
+    position:relative;
+}
+.Dropdown-submenu a::after{
+    transform:rotate(-90deg);
+    position:absolute;
+    right:6px;
+    top:.8em;
+}
+.Dropdown-submenu .dropdown-menu{
+    top:0;
+    left:100%;
+    margin-left:.1em;
+    margin-right:.1em;
+}
+.SiteColor{
+    color:darksalmon;
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

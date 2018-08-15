@@ -10,3 +10,13 @@
         }
     });
 });
+
+(function () {
+    $(window).scroll(function () {
+        var top = $(document).scrollTop();
+        if (top >17)
+            $('#titlebar').addClass('BoxStyle');
+        else
+            $('#titlebar').removeClass('BoxStyle');
+    });
+})();

@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
 
-<h2>Index</h2>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -16,7 +15,7 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img id="image1" class="d-block w-100" src="~/Images/1.jpg" style="height:500px" alt="First slide">
+            <img id="image1" class="d-block w-100" src="~/Images/8.jpg" style="height:500px" alt="First slide">
             <div id="cap1" class="carousel-caption d-none d-md-block">
                 <h5>jhksdl qkjsdq 111111111111</h5>
             </div>
@@ -27,10 +26,10 @@
                 <h5>jhksdl qkjsdq 222222222222</h5>
             </div>
         </div>
-        <div class="carousel-item" style="border:1px solid red">
+        <div class="carousel-item">
             <img id="image3" class="d-block w-100" src="~/Images/3.jpg" style="height:500px" alt="Third slide">
-            <div class="carousel-caption d-none d-md-block" style="background-color:rgba(225, 23, 23, 0.52)">
-                <h5 id="cap3">jhksdl qkjsdq 333333333333333333</h5>
+            <div class="carousel-caption d-none d-md-block">
+                <h1 id="cap3">jhksdl qkjsdq 333333333333333333</h1>
                 <p>kmlqd dqslkfsd qdslkds qds lkqhd qdlshkjdfqlq sq dlsj qdlkqdjq qd fqldk qdlqjfqdqj qjdflqdf qfjlkqdjf qdkjfqldl mqdfklqjf qsdkljflqfhq dlfk dlfqjm</p>
             </div>
         </div>
@@ -63,19 +62,107 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<button id="btn" onclick="test()">btn</button>
+<br/><br />
+<div style="height:50px;border:solid 1px darksalmon"></div>
+<br/><br /><br />
+<div class="row container" style="width:100%">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="col-md-4">
+            <div class="card">
+
+                @if (i == 0)
+                {
+                    <img class="card-img-top" src="~/Images/9.jpg" width="300" height="250" alt="Card image cap">
+                }
+                else if (i == 1)
+                {
+                    <img class="card-img-top" src="~/Images/3.jpg" width="300" height="250" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="card-img-top" src="~/Images/5.jpg" width="300" height="250" alt="Card image cap">
+
+                }
+                <div class="card-body">
+                    @if (i == 0)
+                    {
+                        <h3 class="card-title SiteColor">Nos valeurs</h3>
+                        <p class="card-text">Au cœur de notre action, clé d'une croissance solide et durable, il y a la conviction que la qualité s'acquiert jour après jour, projet après projet et...</p>
+                    }
+                    else if (i == 1)
+                    {
+                        <h3 class="card-title SiteColor">Nos Services</h3>
+                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                    }
+                    else
+                    {
+                        <h3 class="card-title SiteColor">Historique</h3>
+                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                    }
+
+
+                    <a href="#" class="btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
 <script>
     function test() {
         var cap = document.getElementById("cap3");
         var image = document.getElementById("image3");
-        image.setAttribute('src', 'Images/7.jpg');
+        image.setAttribute('src', 'Images/9.jpg');
         cap.innerText = "changed dynamically";
     }
 </script>
+<br/><br /><br /><br />
 
+
+<div class="row mt-2 container">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">CONSULTER NOS OFFRES D'EMPLOI</h5>
+                <h6 class="card-subtitle mb-2 text-muted">CHEFS D'EQUIPE COFFREUR BANCHEUR CDI</h6>
+                <p class="card-text">ANDRE BTP est une entreprise centenaire de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services. Dans le cadre de son fort développement...</p>
+                <a href="#" class="btn btn-primary">Toutes nos offres d'emploi</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">CONSULTER NOS OFFRES DE STAGE</h5>
+                <h6 class="card-subtitle mb-2 text-muted">CHEFS D'EQUIPE COFFREUR BANCHEUR CDI</h6>
+                <p class="card-text">ANDRE BTP est une entreprise centenaire de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services. Dans le cadre de son fort développement...</p>
+                <a href="#" class="btn btn-primary">Candidature spontanée</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            
+            <div class="card-body">
+                <img src="~/Images/8.jpg" class="card-img-top" width="300" height="250" />
+                <h5 class="card-title">Card title</h5>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<br /><br />
 @section scriptsection{
     <script src="~/Script/carousel.js"></script>
     <script src="~/Script/jquery3.min.js"></script>
     <script src="~/Script/bootstrap.min.js"></script>
+    <script src="~/Script/SiteJs.js"></script>
 }
 

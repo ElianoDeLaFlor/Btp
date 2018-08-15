@@ -106,6 +106,8 @@
     <Content Include="Images\7.jpg" />
     <Content Include="Images\img\btns-next-prev.png" />
     <Content Include="Images\img\pagination.png" />
+    <Content Include="Img\bandeauHeader.png" />
+    <Content Include="Img\bg_Header.png" />
     <Content Include="Script\bootstrap.min.js" />
     <Content Include="Script\carousel.js" />
     <Content Include="Script\jquery3.min.js" />
@@ -116,6 +118,7 @@
     <Content Include="Script\JQueryB.js" />
     <Content Include="Script\material.min.js" />
     <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\GlyphIcon.css" />
     <Content Include="Styles\Bootstrap_journal.css" />
     <Content Include="Styles\material.css" />
     <Content Include="Styles\Site.css" />
