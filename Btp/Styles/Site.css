@@ -64,6 +64,22 @@ textarea {
 .SiteColor{
     color:darksalmon;
 }
+.TopFloat {
+    position: absolute;
+    right: 0;
+    top: 20px;
+    left: 0;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+.title{
+    font-family:'Century Gothic Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:larger;
+    font-weight:800
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {

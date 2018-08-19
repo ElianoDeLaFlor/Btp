@@ -52,7 +52,8 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_ns" onmouseover="drop('menu_ns')">NOTRE SOCIETE</a>
                                     <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#">SOCIETE</a>
+                                    
+                                    @Html.ActionLink("SOCIETE", "Index", "NotreSociete", new { area = "" }, new { @class="dropdown-item"})
                                     <!--Sub menu-->
                                     <div class="dropdown-divider"></div>
                                 </li>

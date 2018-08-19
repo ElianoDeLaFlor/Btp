@@ -97,15 +97,17 @@
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\1.jpg" />
+    <Content Include="Images\8.jpg" />
     <Content Include="Images\2.jpg" />
     <Content Include="Images\3.jpg" />
     <Content Include="Images\6.jpg" />
-    <Content Include="Images\4.jpg" />
-    <Content Include="Images\5.jpg" />
     <Content Include="Images\7.jpg" />
     <Content Include="Images\img\btns-next-prev.png" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\5.jpg" />
     <Content Include="Images\img\pagination.png" />
+    <Content Include="Images\9.jpg" />
+    <Content Include="Images\4.jpg" />
     <Content Include="Img\bandeauHeader.png" />
     <Content Include="Img\bg_Header.png" />
     <Content Include="Script\bootstrap.min.js" />
@@ -129,9 +131,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotreSocieteController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -145,6 +149,8 @@
     <Content Include="Views\Home\View.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
     <Content Include="Views\NotreSociete\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
