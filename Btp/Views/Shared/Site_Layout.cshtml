@@ -33,13 +33,13 @@
 <body id="body">
     <div id="page" class="page" >
         <div>
-            <img src="~/Img/bg_Header.png" />
+            <img src="~/Img/bg_Header.png" class="TitleImg"/>
         </div>
         <div class="Conteneur" style="background-color:white">
             <div>
                 <div class="container">
                     <!--menu-->
-                    <nav id="titlebar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: salmon"><span class="glyphicon glyphicon-home"></span>&nbsp;
+                    <nav id="titlebar" class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:darksalmon"><span class="glyphicon glyphicon-home"></span>&nbsp;
                         @Html.ActionLink("KC.BTP","Index","Home", new { area = "" }, new { @class = "navbar-brand" })
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -168,8 +168,17 @@
             }
             
         </script>
-        @RenderSection("scriptsection",false)
+       
         
     </div>
+
+
+    <script src="~/Script/carousel.js"></script>
+    <script src="~/Script/jquery3.min.js"></script>
+    <script src="~/Script/bootstrap.min.js"></script>
+    <script src="~/Script/SiteJs.js"></script>
+    @RenderSection("scriptsection", false)
+
+
 </body>
 </html>

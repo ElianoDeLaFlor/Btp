@@ -9,43 +9,63 @@ namespace Btp.Models
 {
     public class Users
     {
-
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID {get;set;}
         [Display(Name ="Nom")]
+        [RegularExpression("[a-zA-Zéè_-]*", ErrorMessage = "Le Nom ne doit pas contenir que des chiffres")]
         [Required(AllowEmptyStrings =false,ErrorMessage ="Le nom est requis")]
         [StringLength(20,ErrorMessage ="La longueur du nom doit être comprise entre 3-20 caractères",MinimumLength =3)]
         public string Name { get; set; }
 
+
+
         [StringLength(30, ErrorMessage = "La longueur du prenom doit être comprise entre 3-30 caractères", MinimumLength = 3)]
         [Display(Name="Prénom")]
-        [RegularExpression("[a-zA-Zéè_-]*")]
+        [RegularExpression("[a-zA-Zéè_-]*",ErrorMessage ="Le prénom ne doit pas contenir que des chiffres")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Le prénom est requis")]
         public string LastName { get; set; }
 
+
+
         [Display(Name="Nom d'utilisateur")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Le nom d'utilisateur est requis")]
+        [MinLength(4,ErrorMessage ="Le nom d'utilisateur doit être au moins de 4 caractères")]
+        [StringLength(15,ErrorMessage ="Le nom d'utilisateur doit être au maximun de 15 caractères")]
         public string Login { get; set; }
+
+
+
+
+        [Display(Name ="Rôle")]
+        [Required]
+        public Role UserRole { get; set; }
+
+
+
 
         [DataType(DataType.Password)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Le mot de passe est requis")]
         [Display(Name = "Mot de passe")]
-        [StringLength(10, ErrorMessage = "La longueur du mot de passe doit être comprise entre 4-10 caractères", MinimumLength = 4)]
+        [MinLength(4,ErrorMessage ="Le mot de passe doit être de 4 caractères au minimum")]
+        [StringLength(256, ErrorMessage = "Le mot de passe est trop long")]
         public string Password { get; set; }
+        
 
-        [NotMapped]
+
+
         [DataType(DataType.Password)]
         [Display(Name = "Confirmer le mot de passe")]
-        [Compare("Password",ErrorMessage ="La confirmation est incorrecte")]
+        [Compare("Password", ErrorMessage = "La confirmation est incorrecte")]
+        [NotMapped]
+        [StringLength(256,ErrorMessage ="Le mot de passe est trop long")]
+        [MinLength(4,ErrorMessage ="Le mot de passe doit être au moins de 4 caractères")]
         public string ConfirmPassword { get; set; }
-
-        [Display(Name ="Rôle")]
-        public Role UserRole { get; set; }
     }
 
     public enum Role
     {
-        Admin=0,
-        SubAdmin=1,
-        CvAdmin=2
+        Administrateur=0,
+        Sous_Administrateur=1,
+        Cv_Administrateur=2
     }
 }

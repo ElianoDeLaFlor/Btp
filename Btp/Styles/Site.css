@@ -11,7 +11,15 @@
 }
 .page {
     padding: 50px 50px 20px 50px;
-    background-color: rgba(128, 128, 128, 0.52);*/
+    background-color: rgba(128, 128, 128, 0.52);
+    height:100%;
+}
+.TitleImg{
+    width:100%
+}
+.centrer{
+    text-align:center;
+    
 }
 .Conteneur {
     padding:1px /*0px 0px 0px*/;
@@ -30,13 +38,12 @@ footer{
     padding-bottom:5px;
 }
 /* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+
 .BoxStyle {
     box-shadow: 2px 2px 3px 1px rgba(145, 151, 147, 0.568);
+}
+.Box {
+    box-shadow: 1px 1px 6px 0px black;
 }
 .WayFrmTop{
     margin-top:40px;
@@ -75,17 +82,36 @@ textarea {
     color: #fff;
     text-align: center;
 }
+.BottomFloat {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.66);
+}
 .title{
     font-family:'Century Gothic Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:larger;
     font-weight:800
+}
+.test{
+    margin: 2px 20px 2px 20px;
+    padding:10px
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
         margin-top: 20px;
     }
-
+    .test {
+        margin: 2px 200px 2px 200px;
+        padding:40px
+    }
     .body-content {
         padding: 0;
     }

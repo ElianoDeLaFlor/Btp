@@ -4,13 +4,14 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
+<br/>
+<h2 class="centrer">Liste des Utilisateurs</h2>
 
-<h2>Index</h2>
-
+<br/>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nouveau utilisateur", "Create",null, new { @class = "btn btn-primary m-2" })
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -22,19 +23,20 @@
             @Html.DisplayNameFor(model => model.Login)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConfirmPassword)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.UserRole)
         </th>
         <th></th>
     </tr>
+    @{ 
+        int i = 0;
+        string id;
+    }
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in Model)
+{
+    id = "tr" + i;
+
+    <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -45,20 +47,17 @@
             @Html.DisplayFor(modelItem => item.Login)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConfirmPassword)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.UserRole)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            <div id=@id style="display:none">
+                @Html.ActionLink("Editer", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Détail", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Effacer", "Delete", new { id = item.ID }, new { @class = "btn btn-primary" })
+            </div>
         </td>
     </tr>
+    i++;
 }
 
 </table>

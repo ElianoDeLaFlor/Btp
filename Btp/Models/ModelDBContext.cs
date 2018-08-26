@@ -8,7 +8,7 @@ namespace Btp.Models
 {
 	public class ModelDBContext:DbContext
 	{
-        public ModelDBContext() { }
+        public ModelDBContext():base("BTPdb") { }
         public DbSet<Users> Usersinfo { get; set; }
 
 	}

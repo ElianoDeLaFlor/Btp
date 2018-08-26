@@ -1,8 +1,9 @@
 ﻿using Btp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Btp.Controllers
@@ -10,19 +11,22 @@ namespace Btp.Controllers
     public class UserController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
-
+        
         // GET: User
         public ActionResult Index()
         {
-            //List<Users> list = new List<Users>();
-            var lst = from e in mdbc.Usersinfo select e;
+            //ViewBag.test = "testttt";
+            var lst = from user in mdbc.Usersinfo select user;
             return View(lst);
         }
 
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            //var u = from user in mdbc.Usersinfo where user.ID == id select user;
+            var user = mdbc.Usersinfo.SingleOrDefault(u => u.ID == id);
+
+            return View(user);
         }
 
         // GET: User/Create
@@ -33,14 +37,29 @@ namespace Btp.Controllers
 
         // POST: User/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Users users)
         {
             try
             {
+
                 // TODO: Add insert logic here
-                mdbc.Usersinfo.Add(users);
-                mdbc.SaveChanges();
-                return RedirectToAction("Index");
+                if (!UserExist(users.Login))
+                {
+                    //User doen't exist
+                    users.ConfirmPassword = Crypto.Hash(users.ConfirmPassword);
+                    users.Password = Crypto.Hash(users.Password);
+                    mdbc.Usersinfo.Add(users);
+                    mdbc.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    //User exist
+                    ViewBag.Exist = "Ce nom d'utilisateur est déja pris!";
+                    return View();
+
+                }
             }
             catch
             {
@@ -51,39 +70,86 @@ namespace Btp.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            Users user = mdbc.Usersinfo.Find(id);
+            return View(user);
         }
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, Users users)
+        {
+            
+            if (Update(id, users))
+                return RedirectToAction("Index");
+            else
+                return View();
+        }
+
+        private bool Update(int id, Users users)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                var u = from user in mdbc.Usersinfo where user.ID == id select user;
+                foreach (var item in u)
+                {
+                    item.ConfirmPassword = item.Password;
+                    item.LastName = users.LastName;
+                    item.Login = users.Login;
+                    item.Name = users.Name;
+                    item.UserRole = users.UserRole;
+                }             
+                mdbc.SaveChanges();
+                return true;
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return false;
             }
         }
-
+        private bool UpdatePasse(int id, Users users)
+        {
+            try
+            {
+                var u = from user in mdbc.Usersinfo where user.ID == id select user;
+                foreach (var item in u)
+                {
+                    item.ConfirmPassword = Crypto.Hash(users.ConfirmPassword);
+                    item.Password = Crypto.Hash(users.Password);
+                }
+                mdbc.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        private bool UserExist(string userlogin)
+        {
+            var user = from u in mdbc.Usersinfo where u.Login == userlogin select u;
+            return user.Count() > 0 ? true : false;
+        }
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            //var user = mdbc.Usersinfo.SingleOrDefault(u => u.ID == id);
+            Users users = mdbc.Usersinfo.Find(id);
+            return View(users);
         }
 
         // POST: User/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id,Users users)
         {
+            
             try
             {
-                // TODO: Add delete logic here
-
+                Users user = mdbc.Usersinfo.Find(id);
+                mdbc.Usersinfo.Remove(user);
+                mdbc.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -91,5 +157,8 @@ namespace Btp.Controllers
                 return View();
             }
         }
+        
+
+        
     }
 }
