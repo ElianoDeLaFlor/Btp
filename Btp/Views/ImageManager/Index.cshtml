@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Btp.Models.ImageManager>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var item in Model)
+{
+
+    <div class="row card">
+        <div class="col-md-6">
+            <img src="@item.Chemin" height="300" />
+        </div>
+        <div class="col-md-6">
+            <span class="descriptitle">@item.Title</span>
+            <p>@item.Description</p>
+        </div>
+    </div>
+
+@Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+@Html.ActionLink("Details", "Details", new { id = item.Id })
+@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+}
+

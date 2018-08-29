@@ -130,7 +130,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageManagerController.cs" />
     <Compile Include="Controllers\NotreSocieteController.cs" />
+    <Compile Include="Controllers\PasseChangeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,8 +141,13 @@
     <Compile Include="Migrations\201808261032444_InitialCreate.Designer.cs">
       <DependentUpon>201808261032444_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808271339489_imagemanager.cs" />
+    <Compile Include="Migrations\201808271339489_imagemanager.Designer.cs">
+      <DependentUpon>201808271339489_imagemanager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Crypter.cs" />
+    <Compile Include="Models\ImageManager.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\PassChange.cs" />
     <Compile Include="Models\Users.cs" />
@@ -162,6 +169,9 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\PasseChange\Create.cshtml" />
+    <Content Include="Views\ImageManager\Create.cshtml" />
+    <Content Include="Views\ImageManager\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,6 +185,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201808261032444_InitialCreate.resx">
       <DependentUpon>201808261032444_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808271339489_imagemanager.resx">
+      <DependentUpon>201808271339489_imagemanager.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

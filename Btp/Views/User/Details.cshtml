@@ -4,48 +4,9 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-
-<h2>Details</h2>
-@{ 
-    if (Model == null)
-    {
-        
-        <p onshow="Alert()">L'utilisateur est introuvable</p>
-        <!-- Button trigger modal -->
-        <button id="test" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Launch demo modal
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        L'utilisateur est introuvable
-                    </div>
-                    <div class="modal-footer">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-    (function () {
-        var btn = document.getElementById('test');
-        btn.click();           
-        alert('gggggg');
-    })();
-        </script>
-        return;
-    }
-
-}
+<br/>
+<h2 class="centrer">Détail</h2>
+<br/>
 <div>
     <h4>Users</h4>
     <hr />

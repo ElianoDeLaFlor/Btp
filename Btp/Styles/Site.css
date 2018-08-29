@@ -21,6 +21,12 @@
     text-align:center;
     
 }
+.descriptitle{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:larger;
+    font-weight:700;
+    text-align:center
+}
 .Conteneur {
     padding:1px /*0px 0px 0px*/;
 
@@ -102,6 +108,9 @@ footer{
 .test{
     margin: 2px 20px 2px 20px;
     padding:10px
+}
+.imgbord{
+    width:100%
 }
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

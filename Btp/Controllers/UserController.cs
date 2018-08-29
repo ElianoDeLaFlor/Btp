@@ -21,12 +21,15 @@ namespace Btp.Controllers
         }
 
         // GET: User/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            //var u = from user in mdbc.Usersinfo where user.ID == id select user;
+            if(id==null)
+                return RedirectToAction("Index");
             var user = mdbc.Usersinfo.SingleOrDefault(u => u.ID == id);
-
+            if(user==null)
+                return RedirectToAction("Index");
             return View(user);
+                       
         }
 
         // GET: User/Create
@@ -68,10 +71,13 @@ namespace Btp.Controllers
         }
 
         // GET: User/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-
+            if (id == null)
+                return RedirectToAction("Index");
             Users user = mdbc.Usersinfo.Find(id);
+            if (user == null)
+                return RedirectToAction("Index");
             return View(user);
         }
 

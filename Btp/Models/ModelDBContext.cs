@@ -10,6 +10,6 @@ namespace Btp.Models
 	{
         public ModelDBContext():base("BTPdb") { }
         public DbSet<Users> Usersinfo { get; set; }
-
-	}
+        public DbSet<ImageManager> ImageManagerinfo { get; set; }
+    }
 }

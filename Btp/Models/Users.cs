@@ -47,6 +47,7 @@ namespace Btp.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Le mot de passe est requis")]
         [Display(Name = "Mot de passe")]
         [MinLength(4,ErrorMessage ="Le mot de passe doit être de 4 caractères au minimum")]
+        [RegularExpression("[a-zA-Z0-9]*$", ErrorMessage = "Le format du mot de passe est incorrect")]
         [StringLength(256, ErrorMessage = "Le mot de passe est trop long")]
         public string Password { get; set; }
         
