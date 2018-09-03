@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Accueil";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
 
@@ -16,40 +16,45 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img id="image1" class="d-block w-100" src="~/Images/8.jpg" style="height:500px" alt="First slide">
+            <img id="image1" class="d-block w-100 headimage" src="~/Images/8.jpg" alt="First slide">
             <div id="cap1" class="BottomFloat">
-                <h5>jhksdl qkjsdq 111111111111</h5>
+                <h5 id="title1">Title1</h5>
+                <p id="body1">Body1</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img id="image2" class="d-block w-100" src="~/Images/2.jpg" style="height:500px" alt="Second slide">
+            <img id="image2" class="d-block w-100 headimage" src="~/Images/2.jpg" alt="Second slide">
             <div id="cap2" class="BottomFloat">
-                <h5>jhksdl qkjsdq 222222222222</h5>
+                <h5 id="title2">Title2</h5>
+                <p id="body2">Body2</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img id="image3" class="d-block w-100" src="~/Images/3.jpg" style="height:500px" alt="Third slide">
-            <div class="BottomFloat">
-                <h1 id="cap3">jhksdl qkjsdq 333333333333333333</h1>
-                <p>kmlqd dqslkfsd qdslkds qds lkqhd qdlshkjdfqlq sq dlsj qdlkqdjq qd fqldk qdlqjfqdqj qjdflqdf qfjlkqdjf qdkjfqldl mqdfklqjf qsdkljflqfhq dlfk dlfqjm</p>
+            <img id="image3" class="d-block w-100 headimage" src="~/Images/3.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap3">
+                <h5 id="title3">Title3</h5>
+                <p id="body3">Body3</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img id="image4" class="d-block w-100" src="~/Images/4.jpg" style="height:500px" alt="Third slide">
+            <img id="image4" class="d-block w-100 headimage" src="~/Images/4.jpg" alt="Third slide">
             <div id="cap4" class="BottomFloat">
-                <h5 id="cap4">jhksdl qkjsdq 4444444444444444444</h5>
+                <h5 id="title4">Title4</h5>
+                <p id="body4">Body4</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img id="image5" class="d-block w-100" src="~/Images/5.jpg" style="height:500px" alt="Third slide">
-            <div class="BottomFloat">
-                <h5 id="cap5">jhksdl qkjsdq 5555555555555</h5>
+            <img id="image5" class="d-block w-100 headimage" src="~/Images/5.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap5">
+                <h5 id="title5">Title5</h5>
+                <p id="body5">Body5</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img id="image6" class="d-block w-100" src="~/Images/6.jpg" style="height:500px" alt="Third slide">
-            <div class="BottomFloat">
-                <h5 id="cap6">jhksdl qkjsdq 666666666</h5>
+            <img id="image6" class="d-block w-100 headimage" src="~/Images/6.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap6">
+                <h5 id="title6">Title6</h5>
+                <p id="body6">Body6</p>
             </div>
         </div>
 
@@ -112,13 +117,76 @@
 
 </div>
 
-<script>
+<script type="text/javascript">
     function test() {
         var cap = document.getElementById("cap3");
         var image = document.getElementById("image3");
         image.setAttribute('src', 'Images/9.jpg');
         cap.innerText = "changed dynamically";
     }
+    function spliter(str) {
+        return str.split(',');
+    }
+    function Init() {
+        var title1 = document.getElementById('title1');
+        var body1 = document.getElementById('body1');
+        var image1 = document.getElementById('image1');
+
+        var title2 = document.getElementById('title2');
+        var body2 = document.getElementById('body2');
+        var image2 = document.getElementById('image2');
+
+        var title3 = document.getElementById('title3');
+        var body3 = document.getElementById('body3');
+        var image3 = document.getElementById('image3');
+
+        var title4 = document.getElementById('title4');
+        var body4 = document.getElementById('body4');
+        var image4 = document.getElementById('image4');
+
+        var title5 = document.getElementById('title5');
+        var body5 = document.getElementById('body5');
+        var image5 = document.getElementById('image5');
+
+        var title6 = document.getElementById('title6');
+        var body6 = document.getElementById('body6');
+        var image6 = document.getElementById('image6');
+    }
+    function imageslide(str) {
+        var lstobj = str.split(';');
+        Init();
+        image1.src = spliter(lstobj[0])[0];
+        title1.innerText = spliter(lstobj[0])[1];
+        body1.innerText = spliter(lstobj[0])[2];
+
+        image2.src = spliter(lstobj[1])[0];
+        title2.innerText = spliter(lstobj[1])[1];
+        body2.innerText = spliter(lstobj[1])[2];
+
+        image3.src = spliter(lstobj[2])[0];
+        title3.innerText = spliter(lstobj[2])[1];
+        body3.innerText = spliter(lstobj[2])[2];
+
+        image4.src = spliter(lstobj[3])[0];
+        title4.innerText = spliter(lstobj[3])[1];
+        body4.innerText = spliter(lstobj[3])[2];
+
+        image5.src = spliter(lstobj[4])[0];
+        title5.innerText = spliter(lstobj[4])[1];
+        body5.innerText = spliter(lstobj[4])[2];
+
+        image6.src = spliter(lstobj[5])[0];
+        title6.innerText = spliter(lstobj[5])[1];
+        body6.innerText = spliter(lstobj[5])[2];
+    }
+
+    var div = document.querySelector('#body');
+    div.onload = function () {
+        imageslide('@ViewBag.Slide');
+    }
+</script>
+<script type="text/javascript">
+    
 </script>
 <br/><br /><br /><br />
 

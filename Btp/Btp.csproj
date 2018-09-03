@@ -170,8 +170,9 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\PasseChange\Create.cshtml" />
-    <Content Include="Views\ImageManager\Create.cshtml" />
     <Content Include="Views\ImageManager\Index.cshtml" />
+    <Content Include="Views\ImageManager\Create.cshtml" />
+    <Content Include="Views\ImageManager\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

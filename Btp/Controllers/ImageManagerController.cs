@@ -19,9 +19,9 @@ namespace Btp.Controllers
         }
 
         // GET: ImageManager/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         // GET: ImageManager/Create
@@ -33,15 +33,32 @@ namespace Btp.Controllers
         // POST: ImageManager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ImageManager imageManager,HttpPostedFileBase httpPostedFileBase)
+        public ActionResult Create(ImageManager imageManager,HttpPostedFileBase up1)
         {
             try
             {
-                imageManager.Chemin = httpPostedFileBase.FileName;
-               return RedirectToAction("Index");
+                if (up1 != null)
+                {
+                    CreateFolderIfNotExist(Server.MapPath("~/ImgBoard"));
+                    imageManager.Chemin = "/ImgBoard/" + up1.FileName;
+                    mdbc.ImageManagerinfo.Add(imageManager);
+                    if (SaveImg(up1, imageManager.Chemin))
+                    {
+                        mdbc.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    ViewBag.Message = "Une erreur est survenue lors de l'enrégistrement, réessayez s'il vous plaît";
+                    return View();
+                }
+                else
+                {
+                    ViewBag.Message = "Selectionnez une image et réessayez s'il vous plaît";
+                    return View();
+                }
             }
             catch
             {
+                ViewBag.Message = "Une erreur est survenue lors de l'enrégistrement, réessayez s'il vous plaît";
                 return View();
             }
         }
@@ -51,22 +68,94 @@ namespace Btp.Controllers
             if (!Directory.Exists(dirname))
                 Directory.CreateDirectory(dirname);
         }
-
-        // GET: ImageManager/Edit/5
-        public ActionResult Edit(int id)
+        private bool SaveImg(HttpPostedFileBase fileBase,string chemin)
         {
-            return View();
+            try
+            {
+                string p = Server.MapPath("~"+chemin);
+                fileBase.SaveAs(p);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+        private bool DeleteExitingImage(string path)
+        {
+            if(System.IO.File.Exists(path))
+            {
+                try
+                {
+                    System.IO.File.Delete(Server.MapPath("~"+path));
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+            
+        }
+        // GET: ImageManager/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+            ImageManager img = mdbc.ImageManagerinfo.Find(id);
+            return View(img);
         }
 
         // POST: ImageManager/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id, ImageManager manager,HttpPostedFileBase up1)
         {
+            if (id == null)
+                return RedirectToAction("Index");
             try
             {
-                // TODO: Add update logic here
+                ImageManager imageManager = mdbc.ImageManagerinfo.Find(id);
+                if (up1 != null)
+                {
+                    //new image changed
+                    if (DeleteExitingImage(imageManager.Chemin))
+                    {
+                        CreateFolderIfNotExist(Server.MapPath("~/ImgBoard"));
+                        imageManager.Chemin = "/ImgBoard/" + up1.FileName;
+                        imageManager.Title = manager.Title;
+                        imageManager.Description = manager.Description;
+                        if (SaveImg(up1, imageManager.Chemin))
+                        {
+                            mdbc.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+                        ViewBag.Message = "Une erreur est survenue lors de l'enrégistrement, réessayez s'il vous plaît";
+                        return View();
 
-                return RedirectToAction("Index");
+                    }
+                    ViewBag.Message = "Oops,une erreur est survenue réessayez s'il vous plaît";
+                    return View();
+                }
+                else
+                {
+                    //image not changed
+                    try
+                    {
+                        imageManager.Title = manager.Title;
+                        imageManager.Description = manager.Description;
+                        mdbc.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    catch
+                    {
+                        ViewBag.Message = "Une erreur est survenue lors de l'enrégistrement, réessayez s'il vous plaît";
+                        return View();
+                    }
+                }
+                
             }
             catch
             {
@@ -75,25 +164,16 @@ namespace Btp.Controllers
         }
 
         // GET: ImageManager/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            return RedirectToAction("Index");
         }
 
         // POST: ImageManager/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, FormCollection collection)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

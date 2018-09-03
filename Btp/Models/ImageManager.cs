@@ -18,6 +18,7 @@ namespace Btp.Models
         [StringLength(256,ErrorMessage ="La description est trop longue")]
         public String Description { get; set; }
 
+        [Display(Name ="Titre")]
         [StringLength(50,ErrorMessage ="Le tire est trop long")]
         public String Title { get; set; }
     }

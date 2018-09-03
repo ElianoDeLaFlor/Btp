@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Kale BTP</title>
     <link href="~/Styles/material.css" rel="stylesheet"/>
     <link href="~/Styles/Bootstrap.css" rel="stylesheet" />
     <link href="~/Styles/GlyphIcon.css" rel="stylesheet" />
@@ -33,7 +33,7 @@
 <body id="body">
     <div id="page" class="page" >
         <div>
-            <img src="~/Img/bg_Header.png" class="TitleImg"/>
+            <img src="~/Img/bg_Header.png" class="TitleImg" />
         </div>
         <div class="Conteneur" style="background-color:white">
             <div>
@@ -50,7 +50,7 @@
                                 <!--menu notre société-->
                                 <li class=" nav-item dropdown" >
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_ns" onmouseover="drop('menu_ns')">NOTRE SOCIETE</a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" id="mm" onmouseout="">
                                 <li>
                                     
                                     @Html.ActionLink("SOCIETE", "Index", "NotreSociete", new { area = "" }, new { @class="dropdown-item"})
@@ -82,8 +82,8 @@
 
                                 <!--menu domaine d'activité-->
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="menu_da" onmouseover="drop('menu_da')">DOMAINE D'ACTIVITE</a>
-                                    <ul class="dropdown-menu">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_da" onmouseover="drop('menu_da')">DOMAINE D'ACTIVITE</a>
+                                    <ul class="dropdown-menu" onmouseout="drop('menu_da')">
                                         <li>
                                             <a class="dropdown-item" href="#">SOUS-TRAITANCES</a><div class="dropdown-divider"></div>
                                         </li>
@@ -124,7 +124,7 @@
                                 <!--menu recrutement-->
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="menu_re" onmouseover="drop('menu_re')">RECRUTEMENT</a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu" onmouseout="drop('menu_re')">
                                         <li>
                                             <a class="dropdown-item" href="#">OFFRE D'EMPLOI</a><div class="dropdown-divider"></div>
                                         </li>
@@ -166,6 +166,11 @@
                 var v = document.getElementById(id);
                 v.click();
             }
+            function Hide(id) {
+                var v = document.getElementById(id);
+                v.style.display = 'none';;
+            }
+
             
         </script>
        
