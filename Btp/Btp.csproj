@@ -146,10 +146,10 @@
       <DependentUpon>201808271339489_imagemanager.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Crypter.cs" />
     <Compile Include="Models\ImageManager.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\PassChange.cs" />
+    <Compile Include="Models\Recrutement.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
