@@ -27,7 +27,13 @@
             background-color:darksalmon;
             border-color:darksalmon;
         }
-        
+        .glyphicon:hover{
+            color:darksalmon;
+            
+        }
+        .glyphicon {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body id="body">
@@ -49,7 +55,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <!--menu notre société-->
                                 <li class=" nav-item dropdown" >
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_ns" onmouseover="drop('menu_ns')">NOTRE SOCIETE</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_nse" onmouseover="drop('menu_nse')">NOTRE SOCIETE</a>
                                     <ul class="dropdown-menu" id="mm" onmouseout="">
                                 <li>
                                     
@@ -126,10 +132,13 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"id="menu_re" onmouseover="drop('menu_re')">RECRUTEMENT</a>
                                     <ul class="dropdown-menu" onmouseout="drop('menu_re')">
                                         <li>
-                                            <a class="dropdown-item" href="#">OFFRE D'EMPLOI</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("OFFRE D'EMPLOI", "SearchIndex","Recrutement", new { str = "emploi" },new {@class="dropdown-item" } )
+                                            <div class="dropdown-divider"></div>
+                                            
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">OFFRE DE STAGE</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("OFFRE DE STAGE", "SearchIndex", "Recrutement", new { str = "stage" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="#">CANDIDATURE SPONTANEE</a>
@@ -182,6 +191,7 @@
     <script src="~/Script/jquery3.min.js"></script>
     <script src="~/Script/bootstrap.min.js"></script>
     <script src="~/Script/SiteJs.js"></script>
+    <script src="~/Script/material.min.js"></script>
     @RenderSection("scriptsection", false)
 
 

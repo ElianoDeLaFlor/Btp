@@ -1,4 +1,5 @@
 ﻿using Btp.Models;
+using RTE;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,17 @@ namespace Btp.Controllers
     public class ImageManagerController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
+        Editor Editor1 = new Editor(System.Web.HttpContext.Current, "Editor1");
+        
+
+
+
         // GET: ImageManager
         public ActionResult Index()
         {
+            Editor1.LoadFormData("Type Here...");
+            Editor1.MvcInit();
+            ViewBag.Editor = Editor1.MvcGetString();
             var lst = from img in mdbc.ImageManagerinfo select img;
             return View(lst);
         }

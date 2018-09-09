@@ -9,10 +9,12 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+body {
+    background-color: rgba(128, 128, 128, 0.52);
+}
 .page {
     padding: 50px 70px 20px 70px;
-    background-color: rgba(128, 128, 128, 0.52);
-    height:100%;
+    min-height:100%;
 }
 .TitleImg{
     height:90px;

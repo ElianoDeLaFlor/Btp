@@ -21,6 +21,7 @@
         </div>
         <div class="m-2">
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+           
         </div>
     </div>
 
@@ -29,3 +30,4 @@
     <br/>
 }
 
+@Html.Raw(ViewBag.Editor)

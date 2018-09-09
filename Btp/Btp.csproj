@@ -54,6 +54,14 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NetSpell.SpellChecker, Version=2.1.7.24956, Culture=neutral, PublicKeyToken=318b389f0db66e46, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NetSpell.SpellChecker.dll</HintPath>
+    </Reference>
+    <Reference Include="RichTextEditor, Version=8.2.0.0, Culture=neutral, PublicKeyToken=3858aa6802b1223a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RichTextEditor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -125,7 +133,9 @@
     <Content Include="Styles\material.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\Slide.css" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -133,6 +143,7 @@
     <Compile Include="Controllers\ImageManagerController.cs" />
     <Compile Include="Controllers\NotreSocieteController.cs" />
     <Compile Include="Controllers\PasseChangeController.cs" />
+    <Compile Include="Controllers\RecrutementController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +155,14 @@
     <Compile Include="Migrations\201808271339489_imagemanager.cs" />
     <Compile Include="Migrations\201808271339489_imagemanager.Designer.cs">
       <DependentUpon>201808271339489_imagemanager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809052054286_recrutement.cs" />
+    <Compile Include="Migrations\201809052054286_recrutement.Designer.cs">
+      <DependentUpon>201809052054286_recrutement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809081349312_recrutement_update.cs" />
+    <Compile Include="Migrations\201809081349312_recrutement_update.Designer.cs">
+      <DependentUpon>201809081349312_recrutement_update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageManager.cs" />
@@ -173,6 +192,12 @@
     <Content Include="Views\ImageManager\Index.cshtml" />
     <Content Include="Views\ImageManager\Create.cshtml" />
     <Content Include="Views\ImageManager\Edit.cshtml" />
+    <Content Include="Views\Recrutement\Index.cshtml" />
+    <Content Include="Views\Recrutement\Create.cshtml" />
+    <Content Include="Views\Recrutement\Details.cshtml" />
+    <Content Include="Views\Recrutement\Edit.cshtml" />
+    <Content Include="Views\Recrutement\Delete.cshtml" />
+    <Content Include="Views\Recrutement\SearchIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,6 +214,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808271339489_imagemanager.resx">
       <DependentUpon>201808271339489_imagemanager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809052054286_recrutement.resx">
+      <DependentUpon>201809052054286_recrutement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809081349312_recrutement_update.resx">
+      <DependentUpon>201809081349312_recrutement_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

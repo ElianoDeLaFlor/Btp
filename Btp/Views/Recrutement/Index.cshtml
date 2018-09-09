@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Btp.Models.Recrutement>
+
+@{
+    ViewBag.Title = "Recretement";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+<br/>
+<h2 class="centrer" style="text-decoration:underline">Liste des offres d'emploi et de stage</h2>
+<br/>
+<p>
+   @Html.ActionLink("Ajouter", "Create", null, new { @class = "btn btn-primary"})
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Post)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePublication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateExpiration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Niveau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LieuDepot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+       
+        <th></th>
+    </tr>
+    @{
+        int i = 0;
+        string id;
+    }
+@foreach (var item in Model) {
+    id = "tr" + i;
+    <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
+        <td>
+            @Html.DisplayFor(modelItem => item.Post)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePublication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateExpiration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Niveau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LieuDepot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        
+        <td>
+            <div id=@id style="display:none">
+                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil " }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-plus-sign" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash" })
+                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-send" })
+            </div>
+
+        </td>
+    </tr>
+    i++;
+}
+
+</table>
