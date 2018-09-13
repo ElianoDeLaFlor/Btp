@@ -10,7 +10,6 @@ namespace Btp.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Btp.Models.ModelDBContext";
         }
 
         protected override void Seed(Btp.Models.ModelDBContext context)
