@@ -11,6 +11,7 @@ namespace Btp.Models
     public class Recrutement
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="N° de l'offre")]
         public int Id { get; set; }
 
         [StringLength(90,ErrorMessage ="Le texte est trop long")]

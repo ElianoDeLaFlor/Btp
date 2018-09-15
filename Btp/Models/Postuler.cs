@@ -12,7 +12,7 @@ namespace Btp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Display(Name = "Réfferance de l'offre")]
+        [Display(Name = "N° de l'offre")]
         public int RecrutementId { get; set; }
 
         [MaxLength(90, ErrorMessage = "Le nom est trop long")]

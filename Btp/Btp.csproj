@@ -103,6 +103,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="datepickerimg\custom_b.png" />
+    <Content Include="datepickerimg\custom_bl.png" />
+    <Content Include="datepickerimg\custom_br.png" />
+    <Content Include="datepickerimg\custom_l.png" />
+    <Content Include="datepickerimg\custom_r.png" />
+    <Content Include="datepickerimg\custom_t.png" />
+    <Content Include="datepickerimg\custom_tl.png" />
+    <Content Include="datepickerimg\custom_tr.png" />
+    <Content Include="datepickerimg\datepicker_b.png" />
+    <Content Include="datepickerimg\datepicker_bl.png" />
+    <Content Include="datepickerimg\datepicker_br.png" />
+    <Content Include="datepickerimg\datepicker_l.png" />
+    <Content Include="datepickerimg\datepicker_r.png" />
+    <Content Include="datepickerimg\datepicker_t.png" />
+    <Content Include="datepickerimg\datepicker_tl.png" />
+    <Content Include="datepickerimg\datepicker_tr.png" />
+    <Content Include="datepickerimg\field.png" />
+    <Content Include="Script\DatePicker.js" />
+    <Content Include="Script\localFR.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\8.jpg" />
@@ -128,6 +147,7 @@
     <Content Include="Script\JQueryB.js" />
     <Content Include="Script\material.min.js" />
     <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\DatePicker.css" />
     <Content Include="Styles\GlyphIcon.css" />
     <Content Include="Styles\Bootstrap_journal.css" />
     <Content Include="Styles\material.css" />
