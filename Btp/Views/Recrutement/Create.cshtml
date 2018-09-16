@@ -7,98 +7,133 @@
 }
 
 <br /><br />
-<div class="p-2" style="margin:auto">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+ <div class="p-2" style="margin:auto">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="card test">
-            <br />
-            <div class="form-horizontal">
+                <div class="card test">
+                    <br />
+                    <div class="form-horizontal">
 
-                <h2 class="centrer">Offre d'emploi ou de stage</h2>
-                @{
-                    string style;
-                    if (ViewBag.Erreur != null)
-                    {
-                        style = "block";
-                    }
-                    else
-                    {
-                        style = "none";
-                    }
-                    <p style="display:@style" class="alert alert-danger centrer">@ViewBag.Erreur</p>
-                }
+                        <h2 class="centrer">Offre d'emploi ou de stage</h2>
+                        @{
+                            string style;
+                            if (ViewBag.Erreur != null)
+                            {
+                                style = "block";
+                            }
+                            else
+                            {
+                                style = "none";
+                            }
+                            <p style="display:@style" class="alert alert-danger centrer">@ViewBag.Erreur</p>
+                        }
 
-                <br /><br />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.Post, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Post, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Post, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.Niveau, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Niveau, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Niveau, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.LieuDepot, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.LieuDepot, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LieuDepot, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.DateExpiration, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="input-group mb-2 col-md-8">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span></div>
+                        <br /><br />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Post, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Post, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Post, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                        @Html.EditorFor(model => model.DateExpiration, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Niveau, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Niveau, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Niveau, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.LieuDepot, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LieuDepot, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LieuDepot, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.DateExpiration, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="input-group mb-2 col-md-8">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span></div>
+                                </div>
+                                @Html.EditorFor(model => model.DateExpiration, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+                        <div class="form-group row">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                            <br /><br />
+                            @Html.Raw(ViewBag.Editor)
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group date" id="datetimepicker3">
+                                <input type="text" class="form-control" id="txtdate" name="txtdate" placeholder="MM/DD/YYY"/>
+
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-time"></span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            }
 
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
-                <div class="form-group row">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+        </div>
 
-                    <br /><br />
-                    @Html.Raw(ViewBag.Editor)
-                </div>
-
+    <br />
+    </div>
+    @*<div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
             </div>
+            <script type="text/javascript">
+                $(function () {
+                    $('#datetimepicker1').datetimepicker();
+                });
+            </script>
         </div>
-    }
+    </div>*@
 
-</div>
-<br />
-</div>
 @section stylesection{
-<link href="~/Styles/DatePicker.css" rel="stylesheet" />
+    @*<link href="~/bootstrap.css" rel="stylesheet" />
+<link href="~/Styles/picker.css" rel="stylesheet" />
+<script src="~/Script/jquery.js"></script>
+    <script src="~/bootstrap.js"></script>
+<script src="~/Script/local.js"></script>
+<script src="~/Script/picker.js"></script>*@
+
 }
 @section scriptsection{
-<script src="~/Script/DatePicker.js"></script>
-<script src="~/Script/localFR.js"></script>
+
 }

@@ -103,6 +103,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap.css" />
+    <Content Include="bootstrap.js" />
     <Content Include="datepickerimg\custom_b.png" />
     <Content Include="datepickerimg\custom_bl.png" />
     <Content Include="datepickerimg\custom_br.png" />
@@ -121,6 +123,8 @@
     <Content Include="datepickerimg\datepicker_tr.png" />
     <Content Include="datepickerimg\field.png" />
     <Content Include="Script\DatePicker.js" />
+    <Content Include="Script\jquery.js" />
+    <Content Include="Script\local.js" />
     <Content Include="Script\localFR.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -140,6 +144,7 @@
     <Content Include="Script\bootstrap.min.js" />
     <Content Include="Script\carousel.js" />
     <Content Include="Script\jquery3.min.js" />
+    <Content Include="Script\picker.js" />
     <Content Include="Script\SiteJs.js" />
     <Content Include="Script\Slide.js" />
     <Content Include="Script\SliderQuery.js" />
@@ -151,6 +156,7 @@
     <Content Include="Styles\GlyphIcon.css" />
     <Content Include="Styles\Bootstrap_journal.css" />
     <Content Include="Styles\material.css" />
+    <Content Include="Styles\picker.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\Slide.css" />
     <Content Include="Web.config">
@@ -176,6 +182,10 @@
     <Compile Include="Migrations\201809091717509_postuler_note.cs" />
     <Compile Include="Migrations\201809091717509_postuler_note.Designer.cs">
       <DependentUpon>201809091717509_postuler_note.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809152346094_postdate.cs" />
+    <Compile Include="Migrations\201809152346094_postdate.Designer.cs">
+      <DependentUpon>201809152346094_postdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageManager.cs" />
@@ -223,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Post\Attestation\" />
+    <Folder Include="Post\CV\" />
+    <Folder Include="Post\Lettre\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809091620408_Users.resx">
@@ -230,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809091717509_postuler_note.resx">
       <DependentUpon>201809091717509_postuler_note.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809152346094_postdate.resx">
+      <DependentUpon>201809152346094_postdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,9 +7,22 @@
 <br/>
 <h2 class="centrer">Postuler</h2>
 <br />
+@{
+    string style;
+    if (ViewBag.Message != null)
+    {
+        style = "block";
+    }
+    else
+    {
+        style = "none";
+    }
+    <p style="display:@style" class="alert alert-danger centrer">@ViewBag.Message</p>
+}
+<br />
 <div class="p-2" style="margin:auto">
-    @using (Html.BeginForm())
-{
+    @using (Html.BeginForm("Create","Postuler",FormMethod.Post,new {enctype="multipart/form-data" }))
+    {
     @Html.AntiForgeryToken()
 
     <div class="card test">
@@ -55,7 +68,7 @@
             <div class="form-group row">
                 @Html.LabelFor(model => model.Attestation, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    <input type="file" name="attest" id="attest" />
+                    <input type="file" name="attest" id="attest" multiple />
                     @Html.ValidationMessageFor(model => model.Attestation, "", new { @class = "text-danger" })
                     
                 </div>

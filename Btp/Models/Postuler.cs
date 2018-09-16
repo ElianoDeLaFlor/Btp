@@ -27,13 +27,16 @@ namespace Btp.Models
         [Display(Name ="Votre cv")]
         public String CheminCv { get; set; }
 
-        [Display(Name = "Votre Lettre de motivation")]
+        [Display(Name = "Votre lettre de motivation")]
         public String Lettre { get; set; }
 
-        [Display(Name = "Votre Attestation")]
+        [Display(Name = "Vos attestations")]
         public String Attestation { get; set; }
 
         public virtual Recrutement GetRecrutement { get; set; }
+
+        [Display(Name ="Date d'envoi")]
+        public DateTime PostTime { get; set; }
         
     }
 }
