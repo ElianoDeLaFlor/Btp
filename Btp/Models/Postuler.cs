@@ -33,10 +33,20 @@ namespace Btp.Models
         [Display(Name = "Vos attestations")]
         public String Attestation { get; set; }
 
-        public virtual Recrutement GetRecrutement { get; set; }
 
         [Display(Name ="Date d'envoi")]
         public DateTime PostTime { get; set; }
+
+        [Display(Name ="N° de l'offre")]
+        [NotMapped]
+        String TypePost {
+            get {
+                if (RecrutementId == 0)
+                    return "Spontané";
+                else
+                    return RecrutementId.ToString();
+            }
+        }
         
     }
 }

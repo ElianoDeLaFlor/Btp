@@ -1,4 +1,5 @@
 ﻿using Btp.Models;
+using Btp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,7 @@ namespace Btp.Controllers
         public ActionResult Index()
         {
             var lst = from post in mdbc.Postulerinfo select post;
-            return View(lst.ToList());
+            return View(lst);
         }
 
         // GET: Postuler/Details/5
@@ -27,6 +28,11 @@ namespace Btp.Controllers
         // GET: Postuler/Create
         public ActionResult Create()
         {
+            return View();
+        }
+        public ActionResult Demander(int? recid)
+        {
+            ViewBag.RecId = recid;
             return View();
         }
 
@@ -52,7 +58,7 @@ namespace Btp.Controllers
 
                     //lettre
                     CreateFolderIfNotExist(Server.MapPath("~/Post/Lettre"));
-                    post.CheminCv = "/Post/Lettre/" + lettre.FileName;
+                    post.Lettre = "/Post/Lettre/" + lettre.FileName;
 
                     //attestation
                     CreateFolderIfNotExist(Server.MapPath("~/Post/Attestation"));
@@ -71,15 +77,28 @@ namespace Btp.Controllers
                     //save file on disk
                     if(Save(cv,lettre,attest,post))
                     {
-                        mdbc.Postulerinfo.Add(post);
-                        mdbc.SaveChanges();
-                        return RedirectToAction("Index");
+                        try
+                        {
+                            post.PostTime = DateTime.UtcNow;
+                            mdbc.Postulerinfo.Add(post);
+                            mdbc.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+                        catch
+                        {
+                            Effacer(post.CheminCv, post.Lettre, post.Attestation);
+                            ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
+                            return View();
+                        }
+                       
                     }
                     else
                     {
                         Effacer(post.CheminCv, post.Lettre, post.Attestation);
+                        ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
+                        return View();
                     }
-                    return View();
+                    
                 }
                 else
                 {
@@ -94,6 +113,86 @@ namespace Btp.Controllers
                 return View();
             }
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Demander(Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest, String recid)
+        {
+            try
+            {
+                if (cv.ContentLength > 1000000 || lettre.ContentLength > 1000000)
+                {
+                    ViewBag.Message = "La taille du cv ou de la lettre ne doit pas excéder 1MB";
+                    return View();
+                }
+
+                if (cv != null || lettre != null || attest != null)
+                {
+                    //files are provided
+                    //Cv
+                    CreateFolderIfNotExist(Server.MapPath("~/Post/CV"));
+                    post.CheminCv = "/Post/CV/" + cv.FileName;
+
+                    //lettre
+                    CreateFolderIfNotExist(Server.MapPath("~/Post/Lettre"));
+                    post.Lettre = "/Post/Lettre/" + lettre.FileName;
+
+                    //attestation
+                    CreateFolderIfNotExist(Server.MapPath("~/Post/Attestation"));
+                    string attestfiles = "";
+                    int cnt = 1;
+                    foreach (var item in attest)
+                    {
+                        if (cnt == attest.Length)
+                            attestfiles += "/Post/Attestation/" + item.FileName;
+                        else
+                            attestfiles += "/Post/Attestation/" + item.FileName + ",";
+                        cnt++;
+                    }
+                    post.Attestation = attestfiles;
+
+                    //save file on disk
+                    if (Save(cv, lettre, attest, post))
+                    {
+                        try
+                        {
+                            post.RecrutementId = Convert.ToInt32(recid);
+                            post.PostTime = DateTime.UtcNow;
+                            mdbc.Postulerinfo.Add(post);
+                            mdbc.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+                        catch
+                        {
+                            Effacer(post.CheminCv, post.Lettre, post.Attestation);
+                            ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
+                            return View();
+                        }
+
+                    }
+                    else
+                    {
+                        Effacer(post.CheminCv, post.Lettre, post.Attestation);
+                        ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
+                        return View();
+                    }
+
+                }
+                else
+                {
+                    //some files are missing
+                    ViewBag.Message = "Renseignez tous les documents s'il vous plaît";
+                    return View();
+                }
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         private bool Save(HttpPostedFileBase filecv, HttpPostedFileBase filelettre, HttpPostedFileBase[] fileatt,Postuler postuler)
         {
             bool a, b, c;

@@ -38,7 +38,6 @@ namespace Btp.Models
         [StringLength(7000,ErrorMessage ="Le text est trop long")]
         public string Description { get; set; }
 
-        public virtual ICollection<Postuler> GetPostuler { get; set; }
 
     }
     public enum TypeOffre
