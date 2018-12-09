@@ -48,21 +48,22 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        @*<div class="form-group row">
                             @Html.LabelFor(model => model.LieuDepot, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
                                 @Html.EditorFor(model => model.LieuDepot, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.LieuDepot, "", new { @class = "text-danger" })
                             </div>
-                        </div>
+                        </div>*@
 
                         <div class="form-group row">
                             @Html.LabelFor(model => model.DateExpiration, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="input-group mb-2 col-md-8">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span></div>
+                                    <div class="input-group-text"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></div>
                                 </div>
-                                @Html.EditorFor(model => model.DateExpiration, new { htmlAttributes = new { @class = "form-control" } })
+                                
+                                @Html.TextBoxFor(model => model.DateExpiration, new { @type = "date" , @class = "form-control"})
                                 @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -74,27 +75,18 @@
                                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        <span class="glyphicon glyphicon-apple" aria-hidden="true"></span>
+                        
                         <div class="form-group row">
                             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
 
                             <br /><br />
-                            @Html.Raw(ViewBag.Editor)
+                            @Html.TextAreaFor(model => model.Description)
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
-                                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group date" id="datetimepicker3">
-                                <input type="text" class="form-control" id="txtdate" name="txtdate" placeholder="MM/DD/YYY"/>
-
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-time"></span>
-                                </span>
+                                <input type="submit" value="Créer" class="btn btn-default" />
+                                @Html.ActionLink("Retour à liste", "Index", null, new { @class = "btn btn-primary" })
                             </div>
                         </div>
                     </div>
@@ -134,6 +126,20 @@
 <script src="~/Script/picker.js"></script>*@
 
 }
-@section scriptsection{
-
+@section startupscript{
+<script src="~/scripts/tinymce/tinymce.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        selector: 'textarea',
+        height: 500,
+        menubar: true,
+        plugins: [
+            'advlist autolink autoresize lists link image charmap print preview anchor textcolor',
+            'searchreplace visualblocks code fullscreen hr save',
+            'insertdatetime media table contextmenu paste code help wordcount',
+            'colorpicker textcolor table'
+        ],
+        toolbar: 'insert | save copy paste | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+    })
+</script>
 }

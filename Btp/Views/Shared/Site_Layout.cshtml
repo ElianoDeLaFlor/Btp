@@ -36,6 +36,8 @@
             font-size: 20px;
         }
     </style>
+
+    @RenderSection("startupscript", false);
 </head>
 <body id="body">
     <div id="page" class="page" >
@@ -142,7 +144,7 @@
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">CANDIDATURE SPONTANEE</a>
+                                           @Html.ActionLink("CANDIDATURE SPONTANEE", "Create", "Postuler",new { }, new { @class="dropdown-item"})
                                         </li>
                                     </ul>
 </li>

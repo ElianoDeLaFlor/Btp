@@ -16,21 +16,24 @@ namespace Btp.Models
 
         [StringLength(90,ErrorMessage ="Le texte est trop long")]
         [Display(Name ="Poste à occuper")]
+        [Required(AllowEmptyStrings = false,ErrorMessage = "Saisissez le poste à occuper")]
         public String Post { get; set; }
 
         [Display(Name = "Date de publication")]
         public DateTime DatePublication { get; set; }
 
         [Display(Name ="Date limite")]
+        [Required(AllowEmptyStrings = false,ErrorMessage ="Entrez la date limite de l'offre")]
         public DateTime DateExpiration { get; set; }
 
         [StringLength(90)]
         [Display(Name ="Niveau d'étude")]
+        [Required(AllowEmptyStrings =false,ErrorMessage ="Entrez le niveau requis.")]
         public String Niveau { get; set; }
 
-        [Display(Name ="Lieu de dépot")]
-        [StringLength(90)]
-        public string LieuDepot { get; set; }
+        //[Display(Name = "Lieu de dépot")]
+        //[StringLength(90)]
+        //public string LieuDepot { get; set; }
 
         [Display(Name ="Type d'offre")]
         public TypeOffre Type { get; set; }

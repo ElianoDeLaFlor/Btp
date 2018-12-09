@@ -48,6 +48,14 @@
                 </div>
 
                 <div class="form-group row">
+                    @Html.LabelFor(model => model.PostOccupe, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.PostOccupe, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PostOccupe, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     @Html.LabelFor(model => model.CheminCv, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         <input type="file" name="cv" id="cv" />
@@ -76,7 +84,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-secondary" />
+                        <input type="submit" value="Postuler" class="btn btn-secondary" />
                         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 ﻿using Btp.Models;
-using RTE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,6 @@ namespace Btp.Controllers
     public class RecrutementController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
-        Editor Editor1 = new Editor(System.Web.HttpContext.Current, "edit1");
 
         // GET: Recrutement
         public ActionResult Index()
@@ -46,14 +44,7 @@ namespace Btp.Controllers
         // GET: Recrutement/Create
         public ActionResult Create()
         {
-            Editor1.LoadFormData("Description du poste");
-            Editor1.MvcInit();
-            Editor1.MaxHTMLLength =6950;
-            Editor1.DisableStaticTemplates = true;
-            
-            //Editor1.GetContext();
-            ViewBag.Editor = Editor1.MvcGetString();
-
+           
             return View();
         }
 
@@ -61,12 +52,11 @@ namespace Btp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(Recrutement rec,string edit1)
+        public ActionResult Create(Recrutement rec)
         {
             try
             {
                 
-                rec.Description = edit1;
                 rec.DatePublication = DateTime.UtcNow;
                 mdbc.Recrutementinfo.Add(rec);
                 mdbc.SaveChanges();
@@ -85,11 +75,7 @@ namespace Btp.Controllers
             if (id == null)
                 return RedirectToAction("Index");
             Recrutement rec = mdbc.Recrutementinfo.Find(id);
-            Editor1.LoadFormData(rec.Description);
-            Editor1.MvcInit();
-            Editor1.MaxHTMLLength = 6950;
-            Editor1.DisableStaticTemplates = true;
-            ViewBag.Editor = Editor1.MvcGetString();
+           
             return View(rec);
         }
 
@@ -97,7 +83,7 @@ namespace Btp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit(int? id, Recrutement rec,String edit1)
+        public ActionResult Edit(int? id, Recrutement rec)
         {
             try
             {
@@ -105,13 +91,12 @@ namespace Btp.Controllers
                     return RedirectToAction("Index");
                 
                 Recrutement recrutement = mdbc.Recrutementinfo.Find(id);
-                recrutement.Description = edit1;
-                recrutement.LieuDepot = rec.LieuDepot;
+                recrutement.Description = rec.Description;
+                //recrutement.LieuDepot = rec.LieuDepot;
                 recrutement.Niveau = rec.Niveau;
                 recrutement.Post = rec.Post;
                 recrutement.Type = rec.Type;
                 recrutement.DateExpiration = rec.DateExpiration;
-                mdbc.Recrutementinfo.Add(recrutement);
 
                 mdbc.SaveChanges();
                 

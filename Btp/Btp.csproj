@@ -317,21 +317,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809091620408_Users.cs" />
-    <Compile Include="Migrations\201809091620408_Users.Designer.cs">
-      <DependentUpon>201809091620408_Users.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809091717509_postuler_note.cs" />
-    <Compile Include="Migrations\201809091717509_postuler_note.Designer.cs">
-      <DependentUpon>201809091717509_postuler_note.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809152346094_postdate.cs" />
-    <Compile Include="Migrations\201809152346094_postdate.Designer.cs">
-      <DependentUpon>201809152346094_postdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809161930036_postnolink.cs" />
-    <Compile Include="Migrations\201809161930036_postnolink.Designer.cs">
-      <DependentUpon>201809161930036_postnolink.cs</DependentUpon>
+    <Compile Include="Migrations\201812090731241_tables.cs" />
+    <Compile Include="Migrations\201812090731241_tables.Designer.cs">
+      <DependentUpon>201812090731241_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ImageManager.cs" />
@@ -394,17 +382,8 @@
     <Folder Include="Post\Lettre\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809091620408_Users.resx">
-      <DependentUpon>201809091620408_Users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809091717509_postuler_note.resx">
-      <DependentUpon>201809091717509_postuler_note.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809152346094_postdate.resx">
-      <DependentUpon>201809152346094_postdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809161930036_postnolink.resx">
-      <DependentUpon>201809161930036_postnolink.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812090731241_tables.resx">
+      <DependentUpon>201812090731241_tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

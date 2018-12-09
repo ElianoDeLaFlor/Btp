@@ -30,12 +30,14 @@ namespace Btp.Controllers
         {
             return View();
         }
+        //GET: Postuler/Demander
         public ActionResult Demander(int? recid)
         {
             ViewBag.RecId = recid;
             return View();
         }
-
+        
+        
         // POST: Postuler/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,10 +116,10 @@ namespace Btp.Controllers
             }
         }
 
-
+        //POST: Postuler/Demander
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Demander(Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest, String recid)
+        public ActionResult Demander(int id,Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest)
         {
             try
             {
@@ -157,7 +159,7 @@ namespace Btp.Controllers
                     {
                         try
                         {
-                            post.RecrutementId = Convert.ToInt32(recid);
+                            post.RecrutementId = id;//Convert.ToInt32(recid);
                             post.PostTime = DateTime.UtcNow;
                             mdbc.Postulerinfo.Add(post);
                             mdbc.SaveChanges();
