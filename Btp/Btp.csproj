@@ -63,6 +63,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\RichTextEditor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -322,6 +323,7 @@
       <DependentUpon>201812090731241_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DistinctPostulerComparer.cs" />
     <Compile Include="Models\ImageManager.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
     <Compile Include="Models\PassChange.cs" />

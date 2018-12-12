@@ -4,16 +4,15 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-
-<h2>Edit</h2>
-
+<br />
+<h2 class="centrer pt-3" style="text-decoration:underline">Edition d'offre d'emploi ou de stage</h2>
 <div class="p-2" style="margin:auto">
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <div class="card test">
             <div class="form-horizontal">
-                <h2 class="centrer">Edition d'offre d'emploi ou de stage</h2>
+                
                 @{
                     string style;
                     if (ViewBag.Erreur != null)
@@ -48,18 +47,10 @@
                 </div>
 
                 <div class="form-group row">
-                    @Html.LabelFor(model => model.LieuDepot, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.LieuDepot, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LieuDepot, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     @Html.LabelFor(model => model.DateExpiration, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="input-group mb-2 col-md-8">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span></div>
+                            <div class="input-group-text"><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span></div>
                         </div>
                         @Html.EditorFor(model => model.DateExpiration, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.DateExpiration, "", new { @class = "text-danger" })

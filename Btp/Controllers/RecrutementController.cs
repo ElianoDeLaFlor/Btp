@@ -36,6 +36,7 @@ namespace Btp.Controllers
             else
             {
                 Recrutement rec = mdbc.Recrutementinfo.Find(id);
+                ViewBag.Details = rec.Description;
                 return View(rec);
             }
             
