@@ -46,10 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -124,6 +126,11 @@
     <Content Include="datepickerimg\datepicker_tl.png" />
     <Content Include="datepickerimg\datepicker_tr.png" />
     <Content Include="datepickerimg\field.png" />
+    <None Include="scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="scripts\jquery-3.3.1.js" />
+    <Content Include="scripts\jquery-3.3.1.min.js" />
+    <Content Include="scripts\jquery-3.3.1.slim.js" />
+    <Content Include="scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="scripts\tinymce\jquery.tinymce.min.js" />
     <Content Include="scripts\tinymce\license.txt" />
     <Content Include="scripts\tinymce\plugins\advlist\plugin.js" />
@@ -370,6 +377,9 @@
     <Content Include="scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="scripts\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
     <Content Include="scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\SearchResult.cshtml" />
+    <Content Include="scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="scripts\jquery-3.3.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -379,9 +389,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Post\Attestation\" />
-    <Folder Include="Post\CV\" />
-    <Folder Include="Post\Lettre\" />
+    <Folder Include="Post\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201812090731241_tables.resx">

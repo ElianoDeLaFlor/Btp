@@ -15,9 +15,9 @@ namespace Btp.Controllers
         public string[] Critere { get; set; }
         List<Postuler> list;
         // GET: Postuler
-        public ActionResult Index(string searching)
+        /*public ActionResult Index(string searching)
         {
-            if (searching == null)
+            if (searching == null ||searching.Length==0)
             {
                 list = GetList();
                 ViewBag.Search = null;
@@ -32,6 +32,22 @@ namespace Btp.Controllers
             }
             
             return View(list);
+        }*/
+
+        /*public ActionResult Cancel()
+        {
+            return Index("");
+        }*/
+        public ActionResult Index()
+        {
+            var lst = GetList();
+            ViewBag.Postuler = lst;
+            return View(lst);
+        }
+        public ActionResult Recherche(string searchtext)
+        {
+            var lst = GetSearchList(searchtext);
+            return PartialView("SearchResult",lst);
         }
         List<Postuler> GetList()
         {
@@ -50,9 +66,9 @@ namespace Btp.Controllers
             return View();
         }
         //GET: Postuler/Demander
-        public ActionResult Demander(int? recid)
+        public ActionResult Demander(int? recid,string post)
         {
-            ViewBag.RecId = recid;
+            ViewBag.post = post;
             return View();
         }
         
@@ -153,11 +169,12 @@ namespace Btp.Controllers
                     //files are provided
                     //Cv
                     CreateFolderIfNotExist(Server.MapPath("~/Post/CV"));
-                    post.CheminCv = "/Post/CV/" + cv.FileName;
+
+                    post.CheminCv = "/Post/CV/" + CheckName(cv.FileName, "/Post/CV/");
 
                     //lettre
                     CreateFolderIfNotExist(Server.MapPath("~/Post/Lettre"));
-                    post.Lettre = "/Post/Lettre/" + lettre.FileName;
+                    post.Lettre = "/Post/Lettre/" + CheckName(lettre.FileName, "/Post/Lettre/");
 
                     //attestation
                     CreateFolderIfNotExist(Server.MapPath("~/Post/Attestation"));
@@ -166,9 +183,9 @@ namespace Btp.Controllers
                     foreach (var item in attest)
                     {
                         if (cnt == attest.Length)
-                            attestfiles += "/Post/Attestation/" + item.FileName;
+                            attestfiles += "/Post/Attestation/" + CheckName(item.FileName, "/Post/Attestation/");
                         else
-                            attestfiles += "/Post/Attestation/" + item.FileName + ",";
+                            attestfiles += "/Post/Attestation/" + CheckName(item.FileName, "/Post/Attestation/") + ",";
                         cnt++;
                     }
                     post.Attestation = attestfiles;
@@ -352,17 +369,17 @@ namespace Btp.Controllers
         }
         List<Postuler> SearchByPost(string id)
         {
-            var post = from recru in mdbc.Postulerinfo where SqlMethods.Like(recru.PostOccupe,"%"+id+"%")select recru;
+            var post = mdbc.Postulerinfo.Where(x=>x.PostOccupe.Contains(id));
             return post.ToList();
         }
         List<Postuler> SearchByNom(string id)
         {
-            var post = mdbc.Postulerinfo.Where(x => x.Nom.Contains(id));
+            var post = mdbc.Postulerinfo.Where(x=>x.Nom.Contains(id));
             return post.ToList();
         }
         List<Postuler> SearchByPrenom(string id)
         {
-            var post = mdbc.Postulerinfo.Where(x => x.Prenom.Contains(id));
+            var post = mdbc.Postulerinfo.Where(x=>x.Prenom.Contains(id));
             return post.ToList();
         }
 
@@ -396,6 +413,7 @@ namespace Btp.Controllers
             lst = SearchByNom(str);
             Appender(lstIdent, lst);
             lst = SearchByPrenom(str);
+            Appender(lstIdent, lst);
             return lstIdent;
         }
 
@@ -417,6 +435,20 @@ namespace Btp.Controllers
         List<Postuler> GetSearchList(string str)
         {
             return Resultat(str);
+        }
+
+        string CheckName(string filename,string dir)
+        {
+            string p = "~" + dir + filename;
+            int cnt = 0;
+            string chemin= filename;
+            while (System.IO.File.Exists(Server.MapPath(p)))
+            {
+                p= "~" + dir +cnt+"_"+ filename;
+                chemin = cnt + "_" + filename;
+                cnt++;
+            }
+            return chemin;
         }
     }
 }

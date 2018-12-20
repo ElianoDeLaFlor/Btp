@@ -60,13 +60,14 @@
         </td>
         
         <td>
-            <div id=@id style="display:none">
-                @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil ",@title="Editer" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-plus-sign",@title="Afficher" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash",@title="Effacer" })
-                @Html.ActionLink(" ", "Demander","Postuler", new { id = item.Id }, new { @class = "glyphicon glyphicon-send",@title="Postuler" })
-            </div>
-
+            <div>
+                <div id=@id style="display:none">
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil ", @title = "Editer" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-plus-sign", @title = "Afficher" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Effacer" })
+                    @Html.ActionLink(" ", "Demander", "Postuler", new { id = item.Id, post = item.Post }, new { @class = "glyphicon glyphicon-send", @title = "Postuler" })
+                </div>
+            </div>       
         </td>
     </tr>
     i++;

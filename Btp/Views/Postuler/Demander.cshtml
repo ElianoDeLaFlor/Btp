@@ -50,7 +50,7 @@
                 <div class="form-group row">
                     @Html.LabelFor(model => model.PostOccupe, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.PostOccupe, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.PostOccupe, new { htmlAttributes = new { @class = "form-control",@Value= @ViewBag.post } })
                         @Html.ValidationMessageFor(model => model.PostOccupe, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -88,7 +88,6 @@
                         @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
                     </div>
                 </div>
-                <input type="hidden" id="recid" name="recid" value="@ViewBag.RecId" />
             </div>
         </div>
     }
