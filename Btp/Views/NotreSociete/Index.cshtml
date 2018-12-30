@@ -3,18 +3,19 @@
     ViewBag.Title = "Société";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-<br/>
-<div id="societe" class="mx-4" > 
-<h2 class="title decoratetitle mx-2">La société</h2>
-    <div class="media Box">     
-            <img class="m-2 order-11" src="~/Images/5.jpg" height="300" width="350" alt="Generic placeholder image">
+<br />
+<div class="card mx-3">
+    <div id="societe" class="mx-4">
+        <div class="media">
+            <img class="m-2 order-11" src="~/Images/5.jpg" style="width:35%; height:auto" alt="Generic placeholder image">
             <div class="media-body text ml-2">
+                <h2 class="title decoratetitle mx-2">La société</h2>
                 Elitr sit erat consetetur et est accusam vero dolores tation ipsum takimata et kasd
                 eos sit aliquyam labore ullamcorper sanctus vel et stet veniam accumsan vulputate
                 orem minim et esse dolores at ipsum dolore et eirmod iusto elitr assum duo dolor
-                praesent diam tempor dolore tempor diam luptatum consequat elitr te consequat 
+                praesent diam tempor dolore tempor diam luptatum consequat elitr te consequat
                 onsequat vulputate dolore assum et duo ex ipsum dolor tincidunt sed magna no at tempor
-                labore dolore dolor takimata tempor nonummy eirmod diam ea dolore voluptua sed et 
+                labore dolore dolor takimata tempor nonummy eirmod diam ea dolore voluptua sed et
                 ebum accusam in quis at wisi diam eum et in ipsum lorem facilisi diam ad cum nibh no
                 consequat sea eu voluptua qui ut ut velit et option stet quis takimata sea diam dolore
                 labore lorem dolor option takimata laoreet lorem at sea at sit ut lorem dolor nonumy
@@ -24,16 +25,90 @@
                 aliquyam at et voluptua dolore ullamcorper et eos lorem molestie et dolor eirmod elitr
                 nonummy eos sed erat nulla ut facer dolores vero eum ut invidunt dolor stet amet diam
             </div>
-        
+
+        </div>
     </div>
 </div>
-<div>
-    <span class="decoratesubtitle mx-2">Les secteurs</span> 
+<br />
+<div class="card mx-3">
+    <span class="decoratesubtitle mx-2">Nos Valeurs</span>
     <p class="ligne"></p>
-    <div id="secteur" class="text">
-Woe a delight himnot which where olden in was change nor scape loathed from at tear disporting sun fellow losel that dwelt loved labyrinth none sighed nor a still a though low he brow once in sought me despair full in yea before vast birth alone but whence a nor parting vaunted thou hill woe bliss none harolds hill ye loathed a bliss the glee ever was vile wight and that grace when domestic of een his noontide sad he ever his basked bower there fulness and where uncouth sight loved thy things weary where might fulness hight to heart
+    <div id="secteur" class="text mx-4 my-3">
+        <p class="text" style="font-weight:bold;color:darksalmon">
+            Au cœur de notre action, clé d'une croissance solide et durable, il y a la conviction que la qualité s'acquiert jour après jour, projet après projet et qu'elle résulte avant tout du professionnalisme et de l'implication de l'ensemble de nos collaborateurs, à chaque étape de l'acte de construire.
+        </p>
+        <ul type="square" class="text">
+            <li>La qualité de ses prestations et de ses ouvrages</li>
+            <li>La qualité d’écoute et le respect des engagements pris et contractualisés</li>
+            <li>La formation et l’évolution des femmes et des hommes de l’entreprise (Confiance, Responsabilité, Epanouissement des salariés)</li>
+            <li>La rentabilité, moteur essentiel du développement d’une PME</li>
+            <li>La flexibilité, la créativité et innovation permanente</li>
+            <li>L’engagement sociétal : par notre engagement auprès du GEIQ (Groupement d’Employeurs pour l’Insertion et la Qualification) et dans la mise en place de parcours de professionnalisation au profit de jeunes diplômés, mais aussi en s’engageant et en s’impliquant auprès des écoles de la profession comme ITII PAYS DE LOIRE (ingénieurs en alternance), l’I.U.T. de Saint-Nazaire, le CESI et le GRETA , par fidélisation de nos sous-traitants et de nos cotraitants. L’engagement sociétal s’inscrit également dans un partenariat fidèle avec quelques clubs sportifs : USSH section cyclisme, Rugby club de Saint-Sébastien, de Saint-Nazaire et le SNUC section rugby.</li>
+        </ul>
     </div>
-    
+
+</div>
+<br />
+<div class="card mx-3">
+    <span class="decoratesubtitle mx-2">L'équipe</span>
+    <p class="ligne"></p>
+    <div id="secteur" class="text mx-4 my-3">
+        <p class="text" style="font-weight:bold;color:darksalmon">
+            Kale Construction s'entoure de professionnels compétents et dynamiques au service de ses clients et partenaires dans le respect des règles et normes qui régissent la profession. Qualité des réalisations, sécurité des chantiers, méthodes et procédures, respect des délais, sont les valeurs fortes qui animent et fédèrent ses équipes.
+        </p>
+        <ul type="square" class="text">
+            <li>1 Directeur Général</li>
+            <li>1 directeur commercial - étude de prix</li>
+            <li>1 chef de service réhabilitation</li>
+            <li>1 directeur d'exploitation travaux neuf</li>
+            <li>1 service matériel</li>
+            <li>13 conducteurs de travaux</li>
+            <li>1 responsable méthodes référent prévention</li>
+        </ul>
+    </div>
+
+</div>
+<br />
+<div class="card mx-3">
+    <span class="decoratesubtitle mx-2">Les secteurs</span>
+    <p class="ligne"></p>
+    <div id="secteur" class="text mx-4 my-3">
+        <img src="~/Images/1.jpg" style="height:350px;width:100%" />
+    </div>
+
+</div>
+<br />
+<div class="card mx-3">
+    <span class="decoratesubtitle mx-2">Les secteurs d'activités</span>
+    <p class="ligne"></p>
+    <br />
+    <div style="margin:auto">
+        <table>
+            <tr>
+                <td>
+                    <ul type="square" style="color:darksalmon;font-weight:bold">
+                        <li>Travaux et Services</li>
+                        <li>Second oeuvre</li>
+                        <li>Maçonnerie traditionnelle</li>
+                        <li>Maison individuelle</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul type="square" style="color:darksalmon;font-weight:bold">
+                        <li>Gos oeuvre</li>
+                        <li>Entreprise Generale</li>
+                        <li>Réhabilitaion</li>
+                        <li>Génie Civil Indutries</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="secteur" class="text mx-4 my-3">
+        <img src="~/Images/1.jpg" style="height:350px;width:100%" />
+    </div>
+
 </div>
 
 

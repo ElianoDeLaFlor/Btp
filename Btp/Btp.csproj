@@ -315,6 +315,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AffiliationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageManagerController.cs" />
     <Compile Include="Controllers\NotreSocieteController.cs" />
@@ -380,6 +381,8 @@
     <Content Include="Views\Shared\SearchResult.cshtml" />
     <Content Include="scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Affiliation\Index.cshtml" />
+    <Content Include="Views\Home\materiel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

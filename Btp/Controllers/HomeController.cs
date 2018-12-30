@@ -30,7 +30,10 @@ namespace Btp.Controllers
             }
             return lst;
         }
-
+        public ActionResult materiel()
+        {
+            return View();
+        }
         
     }
 }

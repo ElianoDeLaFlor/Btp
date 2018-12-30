@@ -100,6 +100,7 @@
                     {
                         <h3 class="card-title SiteColor">Nos Services</h3>
                         <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                        @Html.ActionLink("En savoir plus", "Index", "NotreSociete", new { area = "" }, new { @class = "btn btn-primary" })
                     }
                     else
                     {
@@ -108,7 +109,7 @@
                     }
 
 
-                    <a href="#" class="btn btn-primary">En savoir plus</a>
+                    @*<a href="#" class="btn btn-primary">En savoir plus</a>*@
                 </div>
             </div>
         </div>

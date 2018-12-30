@@ -9,148 +9,222 @@
     int Recid = 0;
 }
 <br />
-@*@{
 
-    string style;
-    string show;
-    if (Model.Count() == 0)
-    {
-        style = "alert alert-danger centrer";
-    }
-    else
-    {
-        style = "alert alert-success centrer";
-    }
-    if (ViewBag.Search == null)
-    {
-        show = "none";
-    }
-    else
-    {
-        show = "block";
-    }
-    <p style="display:@show" class="@style">@ViewBag.Search</p>
-}*@
-
-@*@using (Html.BeginForm("Index", "Postuler", FormMethod.Get))
-{
-
-    <div class="form-group row">
-        <div class="input-group mb-2 col-md-8 m-auto">
-            @Html.TextBox("searching", null, new { @class = "form-control" })
-            <div class="input-group-prepend">
-                <input type="submit" value="Recherche" class="btn btn-primary" />&nbsp;
-                <input type="button" name="btncancel" id="btncancel" value="Annuler" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}*@
 <div class="form-group row">
     <div class="input-group mb-2 col-md-8 m-auto">
-        @Html.TextBox("Searching", null, new { @class = "form-control", @Placeholder="Recherche"})
+        @Html.TextBox("Searching", null, new { @class = "form-control", @Placeholder = "Recherche" })
     </div>
-    </div>
-    <table class="table table-hover">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RecrutementId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostOccupe)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prenom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostTime)
-            </th>
-            <th>
-                <span class="glyphicon glyphicon-download" title="Télécharger"></span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                @Html.CheckBox("ChkAll", false,new {@title="Tout télécharger" })
-            </th>
-            <th>
-                <span class="glyphicon" title="Supprimer"></span>
-            </th>
-        </tr>
-        @{
-            int i = 0;
-            string id;
-        }
-        <tbody id="tblbody">
-            @if (ViewBag.Postuler != null)
+</div>
+<table class="table table-hover" id="tbl">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RecrutementId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostOccupe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostTime)
+        </th>
+        <th>
+            <button class="btn over" id="btndownload" type="button"><span class="glyphicon glyphicon-download" title="Télécharger"></span></button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.CheckBox("ChkAll", false, new { @title = "Tout télécharger" })
+        </th>
+        <th>
+            <span class="glyphicon" title="Supprimer"></span>
+        </th>
+    </tr>
+    @{
+        int i = 0;
+        string id;
+    }
+    <tbody id="tblbody">
+        @if (ViewBag.Postuler != null)
+        {
+            List<Btp.Models.Postuler> lst;
+            lst = (List<Btp.Models.Postuler>)ViewBag.Postuler;
+            foreach (var item in lst)
             {
-                List<Btp.Models.Postuler> lst;
-                lst = (List<Btp.Models.Postuler>)ViewBag.Postuler;
-                foreach (var item in lst)
-                {
-                    id = "tr" + i;
-                    <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
-                        <td>
-                            @{
-                            Recid = item.RecrutementId;
-                            if (Recid == 0)
-                            {
-                        @typeoffre;
-                            }
-                            else
-                            {
-                        @Html.DisplayFor(modelItem => item.RecrutementId);
-                            }
-
-                            }
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PostOccupe)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nom)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Prenom)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PostTime)
-                        </td>
-                        <td>
-                            @Html.CheckBox("chk"+id, false, new { @class="form-control",@title="Téléchargé"})
-                        </td>
-                        <td>
-                            <div id=@id style="display:none">
-                                @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash",@title="Effacer" })
-                            </div>
-                        </td>
-                    </tr>
-                                        i++;
-                                    }
+                id = "tr" + i;
+                <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
+                    <td>
+                        @{
+                                Recid = item.RecrutementId;
+                                if (Recid == 0)
+                                {
+                            @typeoffre;
                                 }
-        </tbody>
-    </table>
-    @section scriptsection{
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#Searching").keyup(function () {
-                    var txtsearch = $(this).val();
-                    $.ajax({
-                        type: "post",
-                        url: "/Postuler/Recherche?searchtext="+txtsearch,
-                        contentType: "html",            
-                        success: function (response) {
-                            $("#tblbody").html(response);
+                                else
+                                {
+                            @Html.DisplayFor(modelItem => item.RecrutementId);
+                                }
+
                         }
-                    })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostOccupe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostTime)
+                    </td>
+                    <td>
+                        @Html.CheckBox("chk" + item.Id, false, new {@title = "Téléchargé", @onchange = "Check(" + "'#chk" + item.Id + "'," + item.Id + ")" })
+                    </td>
+                    <td>
+                        <div id=@id style="display:none">
+                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Effacer" })
+                        </div>
+                    </td>
+                </tr>
+                                    i++;
+                                }
+                            }
+    </tbody>
+</table>
+<input type="hidden" id="rowcnt" value="@ViewBag.Count" />
+<input class="over" type="button" id="btn" value="azerty"/>
+
+@section scriptsection{
+    <script type="text/javascript">
+        var cnt = (document.getElementById('tbl').getElementsByTagName("tr").length) - 1;
+        var chklst = new Array(cnt);
+        var idlst = new Array();
+        for (var i = 0; i < cnt; i++) {
+            chklst[i] = document.getElementById('chktr' + i);
+        }
+        $(document).ready(function () {
+            $("#Searching").keyup(function () {
+                var txtsearch = $(this).val();
+                $.ajax({
+                    type: "post",
+                    url: "/Postuler/Recherche?searchtext=" + txtsearch,
+                    contentType: "html",
+                    success: function (response) {
+                        $("#tblbody").html(response);
+                        cnt = (document.getElementById('tbl').getElementsByTagName("tr").length) - 1;
+                    }
                 })
             })
-        </script>
-        <script>
-            function all() {
+            //---------------------
+            $("#btndownload").click(function () {
+                for (var i = 0; i < idlst.length; i++) {
+                    $.ajax({
+                        type: "post",
+                        url: "/postuler/Telechargement?id=" + (i + 1),
+                        contentType: "html",
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    })
+                }
+            })
+            //---------------------
+            $("#ChkAll").change(function () {
 
+                @{
+                    List<Btp.Models.Postuler> lst;
+                    lst = (List<Btp.Models.Postuler>)ViewBag.Postuler;
+                    string ids = "";
+                    int cnt = 0;
+                    foreach (var item in lst)
+                    {
+                        if (cnt == lst.Count()-1)
+                        {
+                            ids += item.Id;
+                        }
+                        else
+                        {
+                            ids += item.Id+";";
+                        }
+                        cnt++;
+                    }
+                    ViewBag.List = ids;
+}
+                var idlist= '@ViewBag.List';
+                var idarray = idlist.split(';');
+                
+                if ($("#ChkAll").prop('checked') == true) {
+                    for (var i = 0; i < idarray.length; i++) {
+                        var param1 = "#chk" + idarray[i];
+                        myfunction(param1, idarray[i]);
+                    }
+                } else {
+                    for (var i = 0; i < idarray.length; i++) {
+                        var param1 = "#chk" + idarray[i];
+                        UnAll(param1, idarray[i]);
+                    }
+                }
+            })
+            //----------------------
+        })
+
+        function UnAll(chk, cntr) {
+            if (idlst.includes(cntr)) {
+                // exist
+                var index = idlst.indexOf(cntr);
+                idlst.splice(index, 1);
+                $(chk).prop('checked',false);
+            } else {
+                // do nothing
+                $(chk).prop('checked', false);
             }
-        </script>
-    }
+        }
+        function myfunction(chk,cntr) {
+            if (idlst.includes(cntr)) {
+                // exist
+                $(chk).prop('checked', true);
+            } else {
+                // doesn't exist
+                idlst.push(cntr);
+                $(chk).prop('checked', true);
+            }
+        }
+        function Check(chk, cntr) {
+            if ($(chk).prop('checked') == true) {
+                if (idlst.includes(cntr)) {
+                    // exist
+                    $(chk).prop('checked', true);
+                } else {
+                    // doesn't exist
+                    idlst.push(cntr);
+                    $(chk).prop('checked', true);
+                }
+                if (idlst.length == cnt) {
+                    $("#ChkAll").prop('checked', true);
+                }
+                else
+                {
+                    $("#ChkAll").prop('checked', false);
+                }
+            } else {
+
+                if (idlst.includes(cntr)) {
+                    // exist
+                    var index = idlst.indexOf(cntr);
+                    idlst.splice(index, 1);
+                    $(chk).prop('checked',false);
+                } else {
+                    // do nothing
+                }
+                $("#ChkAll").prop('checked',false);
+            }
+        }
+        
+    </script>
+}
 @section startupscript{
 
-    }
+}

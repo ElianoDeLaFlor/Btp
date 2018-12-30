@@ -47,7 +47,58 @@ namespace Btp.Controllers
         public ActionResult Recherche(string searchtext)
         {
             var lst = GetSearchList(searchtext);
-            return PartialView("SearchResult",lst);
+            return PartialView("SearchResult", lst);
+        }
+        public string test(string test)
+        {
+            return ViewBag.test = test;
+        }
+        private FileResult Download(string chemin)
+        {
+            if (System.IO.File.Exists(chemin))
+            {
+                byte[] filebytes = System.IO.File.ReadAllBytes(chemin);
+                FileInfo fi = new FileInfo(chemin);
+                string filename = fi.Name;
+                return File(filebytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
+            }
+            return null;
+            
+        }
+        private List<string> Chemin(string id)
+        {
+            if (IsNumeric(id))
+            {
+                int idd = int.Parse(id);
+                Postuler postuler = mdbc.Postulerinfo.Find(idd);
+                List<string> str = new List<string>();
+                str.Add(postuler.CheminCv);
+                str.Add(postuler.Lettre);
+                string[] att = postuler.Attestation.Split(',');
+                foreach (var item in att)
+                {
+                    str.Add(item);
+                }
+                return str;
+            }
+            return null;
+        }
+        public bool Telechargement(string id)
+        {
+            List<string> str = Chemin(id);
+            try
+            {
+                foreach (var item in str)
+                {
+                    Download(Server.MapPath("~" + item));
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
         }
         List<Postuler> GetList()
         {
@@ -66,27 +117,27 @@ namespace Btp.Controllers
             return View();
         }
         //GET: Postuler/Demander
-        public ActionResult Demander(int? recid,string post)
+        public ActionResult Demander(int? recid, string post)
         {
             ViewBag.post = post;
             return View();
         }
-        
-        
+
+
         // POST: Postuler/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Postuler post,HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest)
+        public ActionResult Create(Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest)
         {
             try
             {
-                if(cv.ContentLength>1000000||lettre.ContentLength>1000000)
+                if (cv.ContentLength > 5000000 || lettre.ContentLength > 5000000)
                 {
-                    ViewBag.Message = "La taille du cv ou de la lettre ne doit pas excéder 1MB";
+                    ViewBag.Message = "La taille du cv ou de la lettre ne doit pas excéder 5MB";
                     return View();
                 }
-                
-                if(cv!=null || lettre!=null || attest!=null)
+
+                if (cv != null || lettre != null || attest != null)
                 {
                     //files are provided
                     //Cv
@@ -103,16 +154,16 @@ namespace Btp.Controllers
                     int cnt = 1;
                     foreach (var item in attest)
                     {
-                        if(cnt==attest.Length)
-                            attestfiles += "/Post/Attestation/"+item.FileName;
+                        if (cnt == attest.Length)
+                            attestfiles += "/Post/Attestation/" + item.FileName;
                         else
-                            attestfiles += "/Post/Attestation/"+item.FileName + ",";
+                            attestfiles += "/Post/Attestation/" + item.FileName + ",";
                         cnt++;
                     }
-                    post.Attestation= attestfiles;
+                    post.Attestation = attestfiles;
 
                     //save file on disk
-                    if(Save(cv,lettre,attest,post))
+                    if (Save(cv, lettre, attest, post))
                     {
                         try
                         {
@@ -127,7 +178,7 @@ namespace Btp.Controllers
                             ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
                             return View();
                         }
-                       
+
                     }
                     else
                     {
@@ -135,7 +186,7 @@ namespace Btp.Controllers
                         ViewBag.Message = "Une erreur est survenue,réessayez s'il vous plaît";
                         return View();
                     }
-                    
+
                 }
                 else
                 {
@@ -154,13 +205,13 @@ namespace Btp.Controllers
         //POST: Postuler/Demander
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Demander(int id,Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest)
+        public ActionResult Demander(int id, Postuler post, HttpPostedFileBase cv, HttpPostedFileBase lettre, HttpPostedFileBase[] attest)
         {
             try
             {
-                if (cv.ContentLength > 1000000 || lettre.ContentLength > 1000000)
+                if (cv.ContentLength > 5000000 || lettre.ContentLength > 5000000)
                 {
-                    ViewBag.Message = "La taille du cv ou de la lettre ne doit pas excéder 1MB";
+                    ViewBag.Message = "La taille du cv ou de la lettre ne doit pas excéder 5MB";
                     return View();
                 }
 
@@ -231,12 +282,12 @@ namespace Btp.Controllers
             }
         }
 
-        bool Save(HttpPostedFileBase filecv, HttpPostedFileBase filelettre, HttpPostedFileBase[] fileatt,Postuler postuler)
+        bool Save(HttpPostedFileBase filecv, HttpPostedFileBase filelettre, HttpPostedFileBase[] fileatt, Postuler postuler)
         {
             bool a, b, c;
             a = SaveImg(filecv, postuler.CheminCv);
             b = SaveImg(filelettre, postuler.Lettre);
-            c= a = SaveImg(fileatt, postuler.Attestation);
+            c = a = SaveImg(fileatt, postuler.Attestation);
             if (a && b && c)
                 return true;
             else
@@ -288,7 +339,7 @@ namespace Btp.Controllers
             if (System.IO.File.Exists(path))
                 System.IO.File.Delete(path);
         }
-        void Effacer(string cv,string lettre,string attestation)
+        void Effacer(string cv, string lettre, string attestation)
         {
             DeleteOnError(cv);
             DeleteOnError(lettre);
@@ -360,7 +411,7 @@ namespace Btp.Controllers
                 }
                 return null;
             }
-            
+
         }
         bool IsNumeric(string str)
         {
@@ -369,17 +420,17 @@ namespace Btp.Controllers
         }
         List<Postuler> SearchByPost(string id)
         {
-            var post = mdbc.Postulerinfo.Where(x=>x.PostOccupe.Contains(id));
+            var post = mdbc.Postulerinfo.Where(x => x.PostOccupe.Contains(id));
             return post.ToList();
         }
         List<Postuler> SearchByNom(string id)
         {
-            var post = mdbc.Postulerinfo.Where(x=>x.Nom.Contains(id));
+            var post = mdbc.Postulerinfo.Where(x => x.Nom.Contains(id));
             return post.ToList();
         }
         List<Postuler> SearchByPrenom(string id)
         {
-            var post = mdbc.Postulerinfo.Where(x=>x.Prenom.Contains(id));
+            var post = mdbc.Postulerinfo.Where(x => x.Prenom.Contains(id));
             return post.ToList();
         }
 
@@ -417,7 +468,7 @@ namespace Btp.Controllers
             return lstIdent;
         }
 
-       
+
         List<Postuler> Resultat(string str)
         {
             Critere = str.Split(',');
@@ -437,14 +488,14 @@ namespace Btp.Controllers
             return Resultat(str);
         }
 
-        string CheckName(string filename,string dir)
+        string CheckName(string filename, string dir)
         {
             string p = "~" + dir + filename;
             int cnt = 0;
-            string chemin= filename;
+            string chemin = filename;
             while (System.IO.File.Exists(Server.MapPath(p)))
             {
-                p= "~" + dir +cnt+"_"+ filename;
+                p = "~" + dir + cnt + "_" + filename;
                 chemin = cnt + "_" + filename;
                 cnt++;
             }
