@@ -68,8 +68,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<br/><br />
-<div style="height:50px;border:solid 1px darksalmon"></div>
 <br/><br /><br />
 <div class="row container" style="width:100%">
     @for (int i = 0; i < 3; i++)
@@ -93,19 +91,21 @@
                 <div class="card-body">
                     @if (i == 0)
                     {
-                        <h3 class="card-title SiteColor">Nos valeurs</h3>
-                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                        <h3 class="card-title SiteColor">Rehabilitation</h3>
+                        <p class="card-text">Reconnue pour des chantiers emblématiques, Kale Construction consolide sa réputation de spécialiste au sein d'ouvrages qui nécessitent technicité pointue, expérience et encadrement.</p>
+                        @Html.ActionLink("En savoir plus", "Rehabilitation", "Domaine", new { area = "" }, new { @class = "btn btn-primary" })
                     }
                     else if (i == 1)
                     {
                         <h3 class="card-title SiteColor">Nos Services</h3>
-                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale Construction développe une offre globale avec de nouvelles compétences<br /><br/></p>
                         @Html.ActionLink("En savoir plus", "Index", "NotreSociete", new { area = "" }, new { @class = "btn btn-primary" })
                     }
                     else
                     {
-                        <h3 class="card-title SiteColor">Historique</h3>
-                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale BTP développe une offre globale avec de nouvelles compétences :</p>
+                        <h3 class="card-title SiteColor">Partenariat</h3>
+                        <p class="card-text">Plus l'éveil par cataractant roulant ses les melant ameres hideux de folle plus l'horizon cotons un sais parfums bons que triques trouais restais punaises et cotons et des de a</p>
+                        @Html.ActionLink("En savoir plus", "Partenariat", "Domaine", new { area = "" }, new { @class = "btn btn-primary" })
                     }
 
 
@@ -196,10 +196,10 @@
     <div class="col-md-3">
         <div class="card" id='card1' onmouseover="SetStyle('card1')" onmouseout="RemoveStyle('card1')" >
             <div class="card-body">
-                <h5 class="card-title SiteColor">CONSULTER NOS OFFRES D'EMPLOI</h5>
-                <h6 class="card-subtitle mb-2 text-muted">CHEFS D'EQUIPE COFFREUR BANCHEUR CDI</h6>
-                <p class="card-text">ANDRE BTP est une entreprise centenaire de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services. Dans le cadre de son fort développement...</p>
-                <a href="#" class="btn btn-primary">Toutes nos offres d'emploi</a>
+                <h5 class="card-title SiteColor">NOS OFFRES D'EMPLOI</h5>
+                <h6 class="card-subtitle mb-2 text-muted">TRAVAILLER AVEC KALE CONSTRUCTION</h6>
+                <p class="card-text">C’est intégrer une équipe professionnelle et dynamique, au service de ses clients, dans le respect des engagements donnés, permettant à ses collaborateurs d’innover et de s’épanouir.</p>
+                @Html.ActionLink("Toutes nos offres d'emploi", "SearchIndex", "Recrutement", new { str = "tout" }, new { @class = "btn btn-primary" })
             </div>
         </div>
         
@@ -208,10 +208,10 @@
     <div class="col-md-3">
         <div class="card" id='card2' onmouseover="SetStyle('card2')" onmouseout="RemoveStyle('card2')">
             <div class="card-body">
-                <h5 class="card-title SiteColor">CONSULTER NOS OFFRES DE STAGE</h5>
-                <h6 class="card-subtitle mb-2 text-muted">CHEFS D'EQUIPE COFFREUR BANCHEUR CDI</h6>
-                <p class="card-text">ANDRE BTP est une entreprise centenaire de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services. Dans le cadre de son fort développement...</p>
-                <a href="#" class="btn btn-primary">Candidature spontanée</a>
+                <h5 class="card-title SiteColor">POSTULER</h5><br/><br/>
+                <h6 class="card-subtitle mb-2 text-muted">KALE CONSTRUCTION</h6>
+                <p class="card-text">est une entreprise de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services.<br/><br/></p><br/>
+                @Html.ActionLink("Candidature spontanée", "Create", "Postuler", new { area = "" }, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
@@ -220,8 +220,32 @@
         <div class="card">
             
             <div class="card-body">
-                <img src="~/Images/8.jpg" class="card-img-top" width="300" height="250" />
-                <h5 class="card-title">Card title</h5>
+                <!-- Start WOWSlider.com BODY section -->
+                <div id="wowslider-container0">
+                    <div class="ws_images">
+                        <ul>
+                            <li><img src="~/data0/images/4.jpg" alt="Home down slide 1" title="Home down slide 1" id="wows0_0" /></li>
+                            <li><img src="~/data0/images/5.jpg" alt="Home down slide 2" title="Home down slide 2" id="wows0_1" /></li>
+                            <li><img src="~/data0/images/6.jpg" alt="Home down slide 3" title="Home down slide 3" id="wows0_2" /></li>
+                            <li><img src="~/data0/images/7.jpg" alt="javascript image slider" title="Home down slide 4" id="wows0_3" /></li>
+                            <li><img src="~/data0/images/8.jpg" alt="Home down slide 5" title="Home down slide 5" id="wows0_4" /></li>
+                        </ul>
+                    </div>
+                    <div class="ws_bullets">
+                        <div>
+                            <a href="#" title="Home down slide 1"><span><img src="~/data0/tooltips/4.jpg" alt="Home down slide 1" />1</span></a>
+                            <a href="#" title="Home down slide 2"><span><img src="~/data0/tooltips/5.jpg" alt="Home down slide 2" />2</span></a>
+                            <a href="#" title="Home down slide 3"><span><img src="~/data0/tooltips/6.jpg" alt="Home down slide 3" />3</span></a>
+                            <a href="#" title="Home down slide 4"><span><img src="~/data0/tooltips/7.jpg" alt="Home down slide 4" />4</span></a>
+                            <a href="#" title="Home down slide 5"><span><img src="~/data0/tooltips/8.jpg" alt="Home down slide 5" />5</span></a>
+                        </div>
+                    </div>
+                    <div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com/vi">jquery carousel</a> by WOWSlider.com v8.2</div>
+                    <div class="ws_shadow"></div>
+                </div>
+                <script type="text/javascript" src="~/engine0/wowslider.js"></script>
+                <script type="text/javascript" src="~/engine0/script.js"></script>
+                <!-- End WOWSlider.com BODY section -->
                 
             </div>
         </div>

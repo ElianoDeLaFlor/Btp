@@ -29,11 +29,6 @@ namespace Btp.Controllers
                     lst += item.Chemin + "," + item.Title + "," + item.Description;
             }
             return lst;
-        }
-        public ActionResult materiel()
-        {
-            return View();
-        }
-        
+        }        
     }
 }

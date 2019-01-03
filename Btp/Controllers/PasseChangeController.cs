@@ -47,6 +47,7 @@ namespace Btp.Controllers
                         item.Password = Crypto.Hash(pass.NewPass);
                     }
                     mdbc.SaveChanges();
+                    ViewBag.Info = "Modification effectuée avec succès";
                     return RedirectToAction("Index", "User");
                 }
                 else

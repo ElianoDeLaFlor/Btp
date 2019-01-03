@@ -6,7 +6,18 @@
 }
 <br/>
 <h2 class="centrer">Liste des Utilisateurs</h2>
-
+@{
+    string style;
+    if (ViewBag.Info != null)
+    {
+        style = "block";
+    }
+    else
+    {
+        style = "none";
+    }
+    <p id="info_P" style="display:@style" class="alert alert-danger centrer">@ViewBag.Error</p>
+}
 <br/>
 <p>
     @Html.ActionLink("Nouveau utilisateur", "Create",null, new { @class = "btn btn-primary m-2" })

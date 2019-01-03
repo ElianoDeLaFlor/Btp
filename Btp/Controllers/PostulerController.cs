@@ -13,7 +13,7 @@ namespace Btp.Controllers
     {
         ModelDBContext mdbc = new ModelDBContext();
         public string[] Critere { get; set; }
-        List<Postuler> list;
+        // List<Postuler> list;
         // GET: Postuler
         /*public ActionResult Index(string searching)
         {

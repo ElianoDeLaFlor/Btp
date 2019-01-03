@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewBag.Title = "Accueil";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    @*<div class="TopFloat title" style="height:50px;background-color:rgba(0, 0, 0, 0.66);">Kale Construction</div>*@
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img id="image1" class="d-block w-100 headimage" src="~/Images/8.jpg" alt="First slide">
+            <div id="cap1" class="BottomFloat">
+                <h5 id="title1">Title1</h5>
+                <p id="body1">Body1</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img id="image2" class="d-block w-100 headimage" src="~/Images/2.jpg" alt="Second slide">
+            <div id="cap2" class="BottomFloat">
+                <h5 id="title2">Title2</h5>
+                <p id="body2">Body2</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img id="image3" class="d-block w-100 headimage" src="~/Images/3.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap3">
+                <h5 id="title3">Title3</h5>
+                <p id="body3">Body3</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img id="image4" class="d-block w-100 headimage" src="~/Images/4.jpg" alt="Third slide">
+            <div id="cap4" class="BottomFloat">
+                <h5 id="title4">Title4</h5>
+                <p id="body4">Body4</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img id="image5" class="d-block w-100 headimage" src="~/Images/5.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap5">
+                <h5 id="title5">Title5</h5>
+                <p id="body5">Body5</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img id="image6" class="d-block w-100 headimage" src="~/Images/6.jpg" alt="Third slide">
+            <div class="BottomFloat" id="cap6">
+                <h5 id="title6">Title6</h5>
+                <p id="body6">Body6</p>
+            </div>
+        </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<br/><br />
+<div style="height:50px;border:solid 1px darksalmon"></div>
+<br/><br /><br />
+<div class="row container" style="width:100%">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="col-md-4">
+            <div class="card" id=@i  onmouseover="SetStyle(@i)" onmouseout="RemoveStyle(@i)">
+
+                @if (i == 0)
+                {
+                    <img class="card-img-top" src="~/Images/9.jpg" width="300" height="250" alt="Card image cap">
+                }
+                else if (i == 1)
+                {
+                    <img class="card-img-top" src="~/Images/3.jpg" width="300" height="250" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="card-img-top" src="~/Images/5.jpg" width="300" height="250" alt="Card image cap">
+
+                }
+                <div class="card-body">
+                    @if (i == 0)
+                    {
+                        <h3 class="card-title SiteColor">Rehabilitation</h3>
+                        <p class="card-text">Reconnue pour des chantiers emblématiques, Kale Construction consolide sa réputation de spécialiste au sein d'ouvrages qui nécessitent technicité pointue, expérience et encadrement.</p>
+                        @Html.ActionLink("En savoir plus", "Rehabilitation", "Domaine", new { area = "" }, new { @class = "btn btn-primary" })
+                    }
+                    else if (i == 1)
+                    {
+                        <h3 class="card-title SiteColor">Nos Services</h3>
+                        <p class="card-text">Exerçant tous les métiers de la construction à la réhabilitation, Kale Construction développe une offre globale avec de nouvelles compétences<br /><br/></p>
+                        @Html.ActionLink("En savoir plus", "Index", "NotreSociete", new { area = "" }, new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                        <h3 class="card-title SiteColor">Partenariat</h3>
+                        <p class="card-text">Plus l'éveil par cataractant roulant ses les melant ameres hideux de folle plus l'horizon cotons un sais parfums bons que triques trouais restais punaises et cotons et des de a</p>
+                        @Html.ActionLink("En savoir plus", "Partenariat", "Domaine", new { area = "" }, new { @class = "btn btn-primary" })
+                    }
+
+
+                    @*<a href="#" class="btn btn-primary">En savoir plus</a>*@
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+<script type="text/javascript">
+    function test() {
+        var cap = document.getElementById("cap3");
+        var image = document.getElementById("image3");
+        image.setAttribute('src', 'Images/9.jpg');
+        cap.innerText = "changed dynamically";
+    }
+    function spliter(str) {
+        return str.split(',');
+    }
+    function Init() {
+        var title1 = document.getElementById('title1');
+        var body1 = document.getElementById('body1');
+        var image1 = document.getElementById('image1');
+
+        var title2 = document.getElementById('title2');
+        var body2 = document.getElementById('body2');
+        var image2 = document.getElementById('image2');
+
+        var title3 = document.getElementById('title3');
+        var body3 = document.getElementById('body3');
+        var image3 = document.getElementById('image3');
+
+        var title4 = document.getElementById('title4');
+        var body4 = document.getElementById('body4');
+        var image4 = document.getElementById('image4');
+
+        var title5 = document.getElementById('title5');
+        var body5 = document.getElementById('body5');
+        var image5 = document.getElementById('image5');
+
+        var title6 = document.getElementById('title6');
+        var body6 = document.getElementById('body6');
+        var image6 = document.getElementById('image6');
+    }
+    function imageslide(str) {
+        var lstobj = str.split(';');
+        Init();
+        image1.src = spliter(lstobj[0])[0];
+        title1.innerText = spliter(lstobj[0])[1];
+        body1.innerText = spliter(lstobj[0])[2];
+
+        image2.src = spliter(lstobj[1])[0];
+        title2.innerText = spliter(lstobj[1])[1];
+        body2.innerText = spliter(lstobj[1])[2];
+
+        image3.src = spliter(lstobj[2])[0];
+        title3.innerText = spliter(lstobj[2])[1];
+        body3.innerText = spliter(lstobj[2])[2];
+
+        image4.src = spliter(lstobj[3])[0];
+        title4.innerText = spliter(lstobj[3])[1];
+        body4.innerText = spliter(lstobj[3])[2];
+
+        image5.src = spliter(lstobj[4])[0];
+        title5.innerText = spliter(lstobj[4])[1];
+        body5.innerText = spliter(lstobj[4])[2];
+
+        image6.src = spliter(lstobj[5])[0];
+        title6.innerText = spliter(lstobj[5])[1];
+        body6.innerText = spliter(lstobj[5])[2];
+    }
+
+    var div = document.querySelector('#body');
+    div.onload = function () {
+        imageslide('@ViewBag.Slide');
+    }
+</script>
+<script type="text/javascript">
+    
+</script>
+<br/><br /><br /><br />
+
+
+<div class="row mt-2 container">
+    <div class="col-md-3">
+        <div class="card" id='card1' onmouseover="SetStyle('card1')" onmouseout="RemoveStyle('card1')" >
+            <div class="card-body">
+                <h5 class="card-title SiteColor">CONSULTER NOS OFFRES D'EMPLOI</h5>
+                <h6 class="card-subtitle mb-2 text-muted">TRAVAILLER AVEC KALE CONSTRUCTION</h6>
+                <p class="card-text">C’est intégrer une équipe professionnelle et dynamique, au service de ses clients, dans le respect des engagements donnés, permettant à ses collaborateurs d’innover et de s’épanouir.</p>
+                @Html.ActionLink("Toutes nos offres d'emploi", "SearchIndex", "Recrutement", new { str = "tout" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="col-md-3">
+        <div class="card" id='card2' onmouseover="SetStyle('card2')" onmouseout="RemoveStyle('card2')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">POSTULER</h5><br/><br/>
+                <h6 class="card-subtitle mb-2 text-muted">KALE CONSTRUCTION</h6>
+                <p class="card-text">est une entreprise de gros œuvre, d'entreprise générale, de réhabilitation et de travaux services.<br/><br/></p><br/><br/>
+                @Html.ActionLink("Candidature spontanée", "Create", "Postuler", new { area = "" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            
+            <div class="card-body">
+                <img src="~/Images/8.jpg" class="card-img-top" width="300" height="250" />
+                <h5 class="card-title">Card title</h5>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+<br /><br />
+@section stylesection{
+    <script src="~/Script/carousel.js"></script>
+}
+

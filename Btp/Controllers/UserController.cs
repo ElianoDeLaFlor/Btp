@@ -13,9 +13,15 @@ namespace Btp.Controllers
         ModelDBContext mdbc = new ModelDBContext();
         
         // GET: User
+        
         public ActionResult Index()
         {
             //ViewBag.test = "testttt";
+            if(Session["users"]==null)
+            {
+                ViewBag.Info = "Vous devez vous connecter pour accéder à cette page.";
+                return RedirectToAction("Connexion", "Connection");
+            }
             var lst = from user in mdbc.Usersinfo select user;
             return View(lst);
         }
@@ -163,6 +169,8 @@ namespace Btp.Controllers
                 return View();
             }
         }
+
+        
         
 
         

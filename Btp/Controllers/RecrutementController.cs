@@ -19,9 +19,21 @@ namespace Btp.Controllers
         }
         public ActionResult SearchIndex(String str)
         {
-            TypeOffre typeoffre= str == "emploi"? TypeOffre.Emploi : TypeOffre.Stage;
-            ViewBag.Titre = typeoffre == TypeOffre.Emploi ? "Liste des offres d'emploi" : "Liste des offres de stage";
-            var rec = from recru in mdbc.Recrutementinfo where recru.Type==typeoffre select recru;
+            
+            IQueryable<Recrutement> rec;
+            if (str=="tout")
+            {
+                rec = from recru in mdbc.Recrutementinfo select recru;
+                ViewBag.Titre ="Liste des offres d'emploi et de stage";
+            }
+            else
+            {
+                TypeOffre typeoffre = str == "emploi" ? TypeOffre.Emploi : TypeOffre.Stage;
+                ViewBag.Titre = typeoffre == TypeOffre.Emploi ? "Liste des offres d'emploi" : "Liste des offres de stage";
+                rec = from recru in mdbc.Recrutementinfo where recru.Type == typeoffre select recru;
+            }
+            
+            
             return View(rec.ToList());
         }
         

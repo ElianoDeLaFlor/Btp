@@ -8,7 +8,10 @@
     <link href="~/Styles/material.css" rel="stylesheet"/>
     <link href="~/Styles/bootstrap.css" rel="stylesheet" />
     <link href="~/Styles/GlyphIcon.css" rel="stylesheet" />
-    
+    <!-- Start WOWSlider.com HEAD section -->
+    <link rel="stylesheet" type="text/css" href="~/engine0/style.css" />
+    <script type="text/javascript" src="~/engine0/jquery.js"></script>
+    <!-- End WOWSlider.com HEAD section -->
     <link href="~/Styles/Site.css" rel="stylesheet"/>
     <link href="~/Styles/Slide.css" rel="stylesheet"/>
     @RenderSection("stylesection", false);
@@ -67,11 +70,11 @@
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">AFFILIATION</a>
+                                    @Html.ActionLink("AFFILIATION", "Affiliation", "NotreSociete", new { area = "" }, new { @class = "dropdown-item" })
                                     <div class="dropdown-divider"></div>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="#">MATERIELS DISPONIBLE</a>
+                                    @Html.ActionLink("MATERIELS DISPONIBLE", "Materiels", "NotreSociete", new { area = "" }, new { @class = "dropdown-item" })
                                     <div class="dropdown-divider"></div>
                                 </li>
                               </ul>
@@ -83,25 +86,31 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="menu_da" onmouseover="drop('menu_da')">DOMAINE D'ACTIVITE</a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" href="#">SOUS-TRAITANCES</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("SOUS-TRAITANCES", "Index", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">REHABILITATION</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("REHABILITATION", "Rehabilitation", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">GENIE CIVIL</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("GENIE CIVIL", "GeniCivil", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">ENTREPRISE GENERALE</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("ENTREPRISE GENERALE", "EntrepriseGenerale", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">GROS-ŒUVRES</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("GROS-ŒUVRES", "GrosOeuvre", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">PARTENARIAT</a><div class="dropdown-divider"></div>
+                                            @Html.ActionLink("PARTENARIAT", "Partenariat", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
+                                            <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">GENIE ELECTRIQUE</a>
+                                            @Html.ActionLink("GENIE ELECTRIQUE", "GenieElectrique", "Domaine", new { area = "" }, new { @class = "dropdown-item" })
                                         </li>
                                     </ul>
                                 </li>

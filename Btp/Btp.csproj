@@ -109,6 +109,16 @@
   <ItemGroup>
     <Content Include="bootstrap.css" />
     <Content Include="bootstrap.js" />
+    <Content Include="data0\images\4.jpg" />
+    <Content Include="data0\images\5.jpg" />
+    <Content Include="data0\images\6.jpg" />
+    <Content Include="data0\images\7.jpg" />
+    <Content Include="data0\images\8.jpg" />
+    <Content Include="data0\tooltips\4.jpg" />
+    <Content Include="data0\tooltips\5.jpg" />
+    <Content Include="data0\tooltips\6.jpg" />
+    <Content Include="data0\tooltips\7.jpg" />
+    <Content Include="data0\tooltips\8.jpg" />
     <Content Include="datepickerimg\custom_b.png" />
     <Content Include="datepickerimg\custom_bl.png" />
     <Content Include="datepickerimg\custom_br.png" />
@@ -127,6 +137,12 @@
     <Content Include="datepickerimg\datepicker_tr.png" />
     <Content Include="datepickerimg\field.png" />
     <None Include="scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="engine0\jquery.js" />
+    <Content Include="engine0\script.js" />
+    <Content Include="engine0\style.css" />
+    <Content Include="engine0\style.mod.css" />
+    <Content Include="engine0\wowslider.js" />
+    <Content Include="engine0\wowslider.mod.js" />
     <Content Include="scripts\jquery-3.3.1.js" />
     <Content Include="scripts\jquery-3.3.1.min.js" />
     <Content Include="scripts\jquery-3.3.1.slim.js" />
@@ -315,7 +331,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AffiliationController.cs" />
+    <Compile Include="Controllers\ConnectionController.cs" />
+    <Compile Include="Controllers\DomaineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageManagerController.cs" />
     <Compile Include="Controllers\NotreSocieteController.cs" />
@@ -331,6 +348,7 @@
       <DependentUpon>201812090731241_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\DistinctPostulerComparer.cs" />
     <Compile Include="Models\ImageManager.cs" />
     <Compile Include="Models\ModelDBContext.cs" />
@@ -381,8 +399,18 @@
     <Content Include="Views\Shared\SearchResult.cshtml" />
     <Content Include="scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="scripts\jquery-3.3.1.min.map" />
-    <Content Include="Views\Affiliation\Index.cshtml" />
-    <Content Include="Views\Home\materiel.cshtml" />
+    <Content Include="Views\NotreSociete\Affiliation.cshtml" />
+    <Content Include="Views\NotreSociete\Materiels.cshtml" />
+    <Content Include="Views\Domaine\Index.cshtml" />
+    <Content Include="Views\Domaine\Rehabilitation.cshtml" />
+    <Content Include="Views\Domaine\GeniCivil.cshtml" />
+    <Content Include="Views\Domaine\EntrepriseGenerale.cshtml" />
+    <Content Include="Views\Domaine\Grosoeuvre.cshtml" />
+    <Content Include="Views\Domaine\Partenariat.cshtml" />
+    <Content Include="Views\Domaine\GenieElectrique.cshtml" />
+    <Content Include="Views\Connection\Index.cshtml" />
+    <Content Include="Views\Connection\Create.cshtml" />
+    <Content Include="Views\Connection\Connexion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
