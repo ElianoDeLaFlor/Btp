@@ -11,37 +11,66 @@ namespace Btp.Controllers
     public class UserController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
-        
+        object obj = new object();
         // GET: User
-        
+        [AuthUser(AccessLevel =Role.Cv_Administrateur) ]
         public ActionResult Index()
         {
             //ViewBag.test = "testttt";
-            if(Session["users"]==null)
+            //if (!Auth())
+            //{
+            //    //ViewBag.Info = "Vous devez vous connecter pour accéder à cette page.";
+            //    return RedirectToAction("Connexion", "Connection");
+            //}
+            //else
             {
-                ViewBag.Info = "Vous devez vous connecter pour accéder à cette page.";
-                return RedirectToAction("Connexion", "Connection");
+                Users users = (Users)Session["Users"];
+                if (users.UserRole == Role.Administrateur)
+                {
+                    var lst = from user in mdbc.Usersinfo select user;
+                    return View(lst);
+                }
+                else
+                {
+                    return RedirectToAction("NotAuthorized", "Connection");
+                }
             }
-            var lst = from user in mdbc.Usersinfo select user;
-            return View(lst);
+
         }
 
+        // Authentification
+        public object Auth()
+        {
+            if (Session["Users"] == null)
+            {
+                
+               return null;
+            }
+
+            return (Users)Session["Users"];
+
+        }
         // GET: User/Details/5
         public ActionResult Details(int? id)
         {
-            if(id==null)
-                return RedirectToAction("Index");
-            var user = mdbc.Usersinfo.SingleOrDefault(u => u.ID == id);
-            if(user==null)
-                return RedirectToAction("Index");
-            return View(user);
-                       
+            //if (Auth())
+            {
+                if (id == null)
+                    return RedirectToAction("Index");
+                var user = mdbc.Usersinfo.SingleOrDefault(u => u.ID == id);
+                if (user == null)
+                    return RedirectToAction("Index");
+                return View(user);
+            }
+            //return RedirectToAction("Connexion", "Connection");
         }
 
         // GET: User/Create
         public ActionResult Create()
         {
-            return View();
+            //if (Auth())
+                return View();
+            //return RedirectToAction("Connexion", "Connection");
         }
 
         // POST: User/Create
@@ -79,12 +108,17 @@ namespace Btp.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-                return RedirectToAction("Index");
-            Users user = mdbc.Usersinfo.Find(id);
-            if (user == null)
-                return RedirectToAction("Index");
-            return View(user);
+            //if (Auth())
+            {
+
+                if (id == null)
+                    return RedirectToAction("Index");
+                Users user = mdbc.Usersinfo.Find(id);
+                if (user == null)
+                    return RedirectToAction("Index");
+                return View(user);
+            }
+            //return RedirectToAction("Connexion", "Connection");
         }
 
         // POST: User/Edit/5
@@ -92,11 +126,15 @@ namespace Btp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Users users)
         {
-            
+            //if (Auth())
+            {
+
             if (Update(id, users))
                 return RedirectToAction("Index");
             else
                 return View();
+            }
+            //return RedirectToAction("Connexion", "Connection");
         }
 
         private bool Update(int id, Users users)
@@ -111,7 +149,7 @@ namespace Btp.Controllers
                     item.Login = users.Login;
                     item.Name = users.Name;
                     item.UserRole = users.UserRole;
-                }             
+                }
                 mdbc.SaveChanges();
                 return true;
             }
@@ -154,9 +192,9 @@ namespace Btp.Controllers
         // POST: User/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id,Users users)
+        public ActionResult Delete(int id, Users users)
         {
-            
+
             try
             {
                 Users user = mdbc.Usersinfo.Find(id);
@@ -170,9 +208,5 @@ namespace Btp.Controllers
             }
         }
 
-        
-        
-
-        
     }
 }

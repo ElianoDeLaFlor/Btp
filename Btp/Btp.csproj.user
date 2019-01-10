@@ -16,6 +16,7 @@
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/Site_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_DbContextTypeFullName>Btp.Models.ModelDBContext</WebStackScaffolding_DbContextTypeFullName>
+    <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

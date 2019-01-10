@@ -331,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Auth.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
     <Compile Include="Controllers\DomaineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -411,6 +412,8 @@
     <Content Include="Views\Connection\Index.cshtml" />
     <Content Include="Views\Connection\Create.cshtml" />
     <Content Include="Views\Connection\Connexion.cshtml" />
+    <Content Include="Views\Connection\NotAuthorized.cshtml" />
+    <Content Include="Views\Connection\Admin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

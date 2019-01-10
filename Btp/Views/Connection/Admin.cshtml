@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+<br /><br />
+<h2 class="centrer">Tableau de bord</h2>
+<br /><br />
+<div class="row mt-2 container">
+    <div class="col-md-3">
+        <div class="card" id='card1' onmouseover="SetStyle('card1')" onmouseout="RemoveStyle('card1')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">UTILISATEURS</h5><br /><br />
+                <h6 class="card-subtitle mb-2 text-muted">LES ADMINISTRATEURS</h6>
+                <p class="card-text">Affiches la liste les comptes qui administrent le site.<br /><br /></p><br />
+                @Html.ActionLink("Afficher", "Index", "Users", new { area = "" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        <div class="card" id='card3' onmouseover="SetStyle('card3')" onmouseout="RemoveStyle('card3')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">DEMANDES</h5><br /><br />
+                <h6 class="card-subtitle mb-2 text-muted">Reponses aux offres</h6>
+                <p class="card-text">Listes les demandes en réponse aux offres de stage et d'emploi.<br /><br /></p><br />
+                @Html.ActionLink("Candidatures", "Index", "Postuler", new { area = "" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card" id='card2' onmouseover="SetStyle('card2')" onmouseout="RemoveStyle('card2')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">Accueil</h5><br /><br />
+                <h6 class="card-subtitle mb-2 text-muted">Les images de l'accueil</h6>
+                <p class="card-text">Changes les images qui s'affichent sur la page d'accueil.<br /><br /></p><br />
+                @Html.ActionLink("Afficher", "Index", "ImageManager", new { area = "" }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card" id='card4' onmouseover="SetStyle('card4')" onmouseout="RemoveStyle('card4')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">Offre</h5><br /><br />
+                <h6 class="card-subtitle mb-2 text-muted">Ajouter une offre</h6>
+                <p class="card-text">Permets d'ajouter des offres de stage et d'emploi<br /><br /></p><br />
+                @Html.ActionLink("Ajouter une offre", "Create", "Recrutement", new { }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2 container">
+    <div class="col-md-3">
+        <div class="card" id='card5' onmouseover="SetStyle('card5')" onmouseout="RemoveStyle('card5')">
+            <div class="card-body">
+                <h5 class="card-title SiteColor">Offre</h5><br /><br />
+                <h6 class="card-subtitle mb-2 text-muted">Ajouter une offre</h6>
+                <p class="card-text">Permets d'ajouter des offres de stage et d'emploi<br /><br /></p><br />
+                @Html.ActionLink("Ajouter une offre", "Create", "Recrutement", new { }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

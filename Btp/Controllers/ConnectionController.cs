@@ -25,6 +25,8 @@ namespace Btp.Controllers
         //GET: Connection/Connexion
         public ActionResult Connexion()
         {
+            if (Session["Info"] != null)
+                ViewBag.Info = Session["Info"].ToString();
             return View();
         }
         //POST: Connection/Create
@@ -35,7 +37,10 @@ namespace Btp.Controllers
             if (IsCredentialCorrect(con))
             {
                 Session["Users"] = user;
-                return RedirectToAction("Index", "User");
+                Session["Info"] = null;
+                if (PreviousUrl() != null)
+                    return Redirect(PreviousUrl().ToString());
+                return RedirectToAction("Admin", "Connection");
             }
             else
             {
@@ -44,6 +49,16 @@ namespace Btp.Controllers
                 return View();
             }
         }
+        public ActionResult NotAuthorized()
+        {
+            return View();
+        }
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
+        public Uri PreviousUrl() => Request.UrlReferrer;
 
         private Boolean IsCredentialCorrect(Connection con)
         {

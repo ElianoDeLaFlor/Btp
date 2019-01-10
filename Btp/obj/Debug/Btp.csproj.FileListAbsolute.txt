@@ -144,10 +144,6 @@ E:\Btp\Btp\bin\System.Web.WebPages.xml
 E:\Btp\Btp\bin\System.Web.WebPages.Deployment.xml
 E:\Btp\Btp\bin\System.Web.WebPages.Razor.xml
 E:\Btp\Btp\obj\Debug\Btp.csprojResolveAssemblyReference.cache
-E:\Btp\Btp\obj\Debug\Btp.Migrations.Users.resources
-E:\Btp\Btp\obj\Debug\Btp.Migrations.postuler_note.resources
-E:\Btp\Btp\obj\Debug\Btp.Migrations.postdate.resources
-E:\Btp\Btp\obj\Debug\Btp.Migrations.postnolink.resources
 E:\Btp\Btp\obj\Debug\Btp.csproj.GenerateResource.Cache
 E:\Btp\Btp\obj\Debug\Btp.dll
 E:\Btp\Btp\obj\Debug\Btp.pdb
@@ -301,3 +297,4 @@ H:\Btp\Btp\obj\Debug\Btp.pdb
 H:\Btp\Btp\obj\Debug\Btp.csprojResolveAssemblyReference.cache
 H:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
 H:\Btp\Btp\obj\Debug\Btp.csproj.GenerateResource.Cache
+E:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
