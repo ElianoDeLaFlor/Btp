@@ -5,18 +5,6 @@
 }
 
 <h2 class="centrer">Connection</h2>
-@{
-    string style;
-    if (ViewBag.Info != null)
-    {
-        style = "block";
-    }
-    else
-    {
-        style = "none";
-    }
-    <p id="info_P" style="display:@style" class="alert alert-danger centrer">@ViewBag.Info</p>
-}
 
 @using (Html.BeginForm())
 {

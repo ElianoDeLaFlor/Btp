@@ -4,11 +4,16 @@
     ViewBag.Title = "Recretement";
     Layout = "~/Views/Shared/Site_Layout.cshtml";
 }
-<br/>
+<br />
 <h2 class="centrer" style="text-decoration:underline">Liste des offres d'emploi et de stage</h2>
-<br/>
+<br />
 <p>
-   @Html.ActionLink("Ajouter", "Create", null, new { @class = "btn btn-primary"})
+   
+    @if (Session["users"] != null)
+    {
+        Html.ActionLink("Ajouter", "Create", null, new { @class = "btn btn-primary" });
+        Html.ActionLink("Panneau de control", "Admin", "Connection", new { area = "" }, new { @class = "btn btn-primary" });
+    }
 </p>
 <table class="table table-hover">
     <tr>
@@ -30,47 +35,51 @@
         <th>
             @Html.DisplayNameFor(model => model.Type)
         </th>
-       
+
         <th></th>
     </tr>
     @{
         int i = 0;
         string id;
     }
-@foreach (var item in Model) {
-    id = "tr" + i;
-    <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Post)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatePublication)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateExpiration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Niveau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        
-        <td>
-            <div>
-                <div id=@id style="display:none">
-                    @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil ", @title = "Editer" }) |
-                    @Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-plus-sign", @title = "Afficher" }) |
-                    @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Effacer" })
-                    @Html.ActionLink(" ", "Demander", "Postuler", new { id = item.Id, post = item.Post }, new { @class = "glyphicon glyphicon-send", @title = "Postuler" })
+    @foreach (var item in Model)
+    {
+        id = "tr" + i;
+        <tr onmouseover="Show('@id')" onmouseout="Hide('@id')">
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePublication)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateExpiration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Niveau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+
+            <td>
+                <div>
+                    <div id=@id style="display:none">
+                        @if (Session["users"] != null)
+                        {
+                            Html.ActionLink(" ", "Edit", new { id = item.Id }, new { @class = "glyphicon glyphicon-pencil ", @title = "Editer" });
+                            Html.ActionLink(" ", "Details", new { id = item.Id }, new { @class = "glyphicon glyphicon-plus-sign", @title = "Afficher" });
+                            Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "glyphicon glyphicon-trash", @title = "Effacer" });
+                        }
+                        @Html.ActionLink(" ", "Demander", "Postuler", new { id = item.Id, post = item.Post }, new { @class = "glyphicon glyphicon-send", @title = "Postuler" })
+                    </div>
                 </div>
-            </div>       
-        </td>
-    </tr>
-    i++;
-}
+            </td>
+        </tr>
+        i++;
+    }
 
 </table>

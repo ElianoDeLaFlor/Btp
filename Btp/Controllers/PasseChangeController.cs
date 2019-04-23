@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Btp.Controllers
 {
+    [AuthConnection]
     public class PasseChangeController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
@@ -24,6 +25,7 @@ namespace Btp.Controllers
         }
 
         // GET: PasseChange/Create
+        [AuthConnection]
         public ActionResult Create()
         {
             return View();
@@ -32,6 +34,7 @@ namespace Btp.Controllers
         // POST: PasseChange/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AuthConnection]
         public ActionResult Create(PassChange pass)
         {
             try

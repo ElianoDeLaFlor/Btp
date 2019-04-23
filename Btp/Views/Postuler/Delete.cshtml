@@ -1,0 +1,89 @@
+﻿@model Btp.Models.Postuler
+
+@{
+    ViewBag.Title = "Postuler";
+    Layout = "~/Views/Shared/Site_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h2 class="centrer">Etes-vous sûr de vouloir supprimer ?</h2>
+<div>
+    <h4>Postuler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RecrutementId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecrutementId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostOccupe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostOccupe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheminCv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheminCv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lettre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lettre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Attestation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attestation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la liste", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

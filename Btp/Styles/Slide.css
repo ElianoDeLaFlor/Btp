@@ -1,6 +1,6 @@
 ﻿#slides {
     display: none;
-    width:100%;
+    width: 100%;
 }
 
     #slides .slidesjs-navigation {
@@ -76,28 +76,28 @@ a:hover.slidesjs-stop {
             background-image: url('../Images/img/pagination.png');
             background-position: 0 0;
             float: left;
-            overflow:hidden;
+            overflow: hidden;
         }
 
-.slidesjs-pagination li a.active,
-.slidesjs-pagination li a:hover.active {
-     background-position: 0 -13px
-}
+            .slidesjs-pagination li a.active,
+            .slidesjs-pagination li a:hover.active {
+                background-position: 0 -13px;
+            }
 
-.slidesjs-pagination li a:hover {
-     background-position: 0 -26px
-}
+            .slidesjs-pagination li a:hover {
+                background-position: 0 -26px;
+            }
 
 #slides a:link,
 #slides a:visited {
-    color: #333
+    color: #333;
 }
 
 #slides a:hover,
 #slides a:active {
-    color: #9e2020
+    color: #9e2020;
 }
 
 .container {
-    margin: 0 auto
+    margin: 0 auto;
 }

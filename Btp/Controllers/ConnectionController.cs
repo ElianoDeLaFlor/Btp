@@ -38,8 +38,12 @@ namespace Btp.Controllers
             {
                 Session["Users"] = user;
                 Session["Info"] = null;
-                if (PreviousUrl() != null)
-                    return Redirect(PreviousUrl().ToString());
+                if (Session["url"] != null)
+                {
+                    string url = Session["url"].ToString();
+                    Session["url"] = null;
+                    return Redirect(url);
+                }
                 return RedirectToAction("Admin", "Connection");
             }
             else
@@ -53,9 +57,18 @@ namespace Btp.Controllers
         {
             return View();
         }
+        [AuthConnection]
         public ActionResult Admin()
         {
+            Users u = (Users)Session["users"];
+            ViewBag.LogName = u.Login;
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+           return RedirectToAction("Index", "Home");
         }
 
         public Uri PreviousUrl() => Request.UrlReferrer;

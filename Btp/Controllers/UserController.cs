@@ -8,12 +8,13 @@ using System.Web.Mvc;
 
 namespace Btp.Controllers
 {
+    [AuthUser(AccessLevel = Role.Administrateur)]
     public class UserController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
-        object obj = new object();
+
         // GET: User
-        [AuthUser(AccessLevel =Role.Cv_Administrateur) ]
+        
         public ActionResult Index()
         {
             //ViewBag.test = "testttt";
@@ -38,18 +39,6 @@ namespace Btp.Controllers
 
         }
 
-        // Authentification
-        public object Auth()
-        {
-            if (Session["Users"] == null)
-            {
-                
-               return null;
-            }
-
-            return (Users)Session["Users"];
-
-        }
         // GET: User/Details/5
         public ActionResult Details(int? id)
         {

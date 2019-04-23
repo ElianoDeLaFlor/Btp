@@ -298,3 +298,4 @@ H:\Btp\Btp\obj\Debug\Btp.csprojResolveAssemblyReference.cache
 H:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
 H:\Btp\Btp\obj\Debug\Btp.csproj.GenerateResource.Cache
 E:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
+E:\Btp\Btp\obj\Debug\Btp.csproj.CoreCompileInputs.cache

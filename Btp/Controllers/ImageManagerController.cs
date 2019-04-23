@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Btp.Controllers
 {
+    [AuthUsers(AccessLevelOne =Role.Sous_Administrateur,AccessLevelTwo =Role.Administrateur)]
     public class ImageManagerController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();

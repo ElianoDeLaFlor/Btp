@@ -66,6 +66,8 @@
       <HintPath>bin\RichTextEditor.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -332,7 +334,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Auth.cs" />
+    <Compile Include="Controllers\AuthConnection.cs" />
+    <Compile Include="Controllers\Authuser.cs" />
     <Compile Include="Controllers\ConnectionController.cs" />
+    <Compile Include="Controllers\CustomResultAction.cs" />
     <Compile Include="Controllers\DomaineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageManagerController.cs" />
@@ -414,6 +419,7 @@
     <Content Include="Views\Connection\Connexion.cshtml" />
     <Content Include="Views\Connection\NotAuthorized.cshtml" />
     <Content Include="Views\Connection\Admin.cshtml" />
+    <Content Include="Views\Postuler\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

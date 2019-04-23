@@ -53,7 +53,7 @@ namespace Btp.Controllers
             }
             
         }
-
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         // GET: Recrutement/Create
         public ActionResult Create()
         {
@@ -62,6 +62,7 @@ namespace Btp.Controllers
         }
 
         // POST: Recrutement/Create
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -83,6 +84,7 @@ namespace Btp.Controllers
         }
 
         // GET: Recrutement/Edit/5
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -93,6 +95,7 @@ namespace Btp.Controllers
         }
 
         // POST: Recrutement/Edit/5
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
@@ -123,6 +126,7 @@ namespace Btp.Controllers
         }
 
         // GET: Recrutement/Delete/5
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -135,6 +139,7 @@ namespace Btp.Controllers
         }
 
         // POST: Recrutement/Delete/5
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)

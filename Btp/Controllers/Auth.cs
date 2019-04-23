@@ -8,22 +8,30 @@ using System.Web.Mvc;
 
 namespace Btp.Controllers
 {
-    public class AuthUserAttribute : AuthorizeAttribute
+    public class AuthUsersAttribute : AuthorizeAttribute
     {
-        public Role AccessLevel { get; set; }
-        //public object Utilisateur { get; set; }
+        ModelDBContext mdbc = new ModelDBContext();
+        public Role AccessLevelOne { get; set; }
+        public Role AccessLevelTwo { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            //return base.AuthorizeCore(httpContext);
-            //if (Utilisateur == null)
-            //    return false;
-            //Users users = (Users)Utilisateur;
-            //return AccessLevel == users.UserRole;
-            return AccessLevel == Role.Administrateur;
+            Users user = (Users)HttpContext.Current.Session["users"];
+            HttpContext.Current.Session["url"] = httpContext.Request.RawUrl;
+            if (user == null)
+            {
+                return false;
+            }
+            else
+            {
+                return AccessLevelOne == user.UserRole || AccessLevelTwo==user.UserRole;
+            }
         }
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
             //base.HandleUnauthorizedRequest(filterContext);
+            if (HttpContext.Current.Session["users"] == null)
+            {
+
             filterContext.Result = new RedirectToRouteResult(
                 new System.Web.Routing.RouteValueDictionary(
                     new
@@ -32,8 +40,19 @@ namespace Btp.Controllers
                         action = "Connexion"
                     }
                     ));
+            }
+            else
+            {
+                filterContext.Result = new RedirectToRouteResult(
+                new System.Web.Routing.RouteValueDictionary(
+                    new
+                    {
+                        controller = "Connection",
+                        action = "NotAuthorized"
+                    }
+                    ));
+            }
         }
     }
-
    
 }

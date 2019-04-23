@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.Linq.SqlClient;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Btp.Controllers
 {
+    
     public class PostulerController : Controller
     {
         ModelDBContext mdbc = new ModelDBContext();
@@ -38,12 +40,14 @@ namespace Btp.Controllers
         {
             return Index("");
         }*/
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         public ActionResult Index()
         {
             var lst = GetList();
             ViewBag.Postuler = lst;
             return View(lst);
         }
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         public ActionResult Recherche(string searchtext)
         {
             var lst = GetSearchList(searchtext);
@@ -55,13 +59,14 @@ namespace Btp.Controllers
         }
         private FileResult Download(string chemin)
         {
-            if (System.IO.File.Exists(chemin))
+            /*if (System.IO.File.Exists(chemin))
             {
                 byte[] filebytes = System.IO.File.ReadAllBytes(chemin);
                 FileInfo fi = new FileInfo(chemin);
+                ZipFile.
                 string filename = fi.Name;
                 return File(filebytes, System.Net.Mime.MediaTypeNames.Application.Octet, filename);
-            }
+            }*/
             return null;
             
         }
@@ -83,20 +88,26 @@ namespace Btp.Controllers
             }
             return null;
         }
-        public bool Telechargement(string id)
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
+        public FileResult[] Telechargement(string id)
         {
             List<string> str = Chemin(id);
+            FileResult[] lfr=new FileResult[str.Count];
+            int cnt = 0;
             try
             {
                 foreach (var item in str)
                 {
-                    Download(Server.MapPath("~" + item));
+
+                    lfr[cnt]=(Download(Server.MapPath("~" + item)));
+                    cnt++;
                 }
-                return true;
+                Session["frr"] = lfr;
+                return lfr;
             }
             catch
             {
-                return false;
+                return lfr;
             }
 
         }
@@ -104,7 +115,12 @@ namespace Btp.Controllers
         {
             return (from post in mdbc.Postulerinfo select post).ToList();
         }
-
+        public FileResult[] DownTest(FileResult[] fr)
+        {
+            FileResult[] frr = (FileResult[])Session["frr"];
+            
+            return frr;
+        }
         // GET: Postuler/Details/5
         public ActionResult Details(int id)
         {
@@ -373,23 +389,33 @@ namespace Btp.Controllers
         }
 
         // GET: Postuler/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+                return RedirectToAction("Index");
+
+            Postuler post = mdbc.Postulerinfo.Find(id);
+            if (post == null)
+                return RedirectToAction("Index");
+            return View(post);
         }
 
         // POST: Postuler/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AuthUsers(AccessLevelOne = Role.Administrateur, AccessLevelTwo = Role.Cv_Administrateur)]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Postuler rec = mdbc.Postulerinfo.Find(id);
+                mdbc.Postulerinfo.Remove(rec);
+                mdbc.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Erreur = "Impossible de supprimer l'élément selectionné";
                 return View();
             }
         }
@@ -490,9 +516,11 @@ namespace Btp.Controllers
 
         string CheckName(string filename, string dir)
         {
-            string p = "~" + dir + filename;
+            FileInfo fi = new FileInfo(filename);
+            string fn = fi.Name;
+            string p = "~" + dir + fn;
             int cnt = 0;
-            string chemin = filename;
+            string chemin = fn;
             while (System.IO.File.Exists(Server.MapPath(p)))
             {
                 p = "~" + dir + cnt + "_" + filename;
