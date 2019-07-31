@@ -215,11 +215,6 @@ D:\Btp\Btp\bin\System.Web.Razor.xml
 D:\Btp\Btp\bin\System.Web.WebPages.xml
 D:\Btp\Btp\bin\System.Web.WebPages.Deployment.xml
 D:\Btp\Btp\bin\System.Web.WebPages.Razor.xml
-D:\Btp\Btp\obj\Debug\Btp.csprojResolveAssemblyReference.cache
-D:\Btp\Btp\obj\Debug\Btp.Migrations.Users.resources
-D:\Btp\Btp\obj\Debug\Btp.Migrations.postuler_note.resources
-D:\Btp\Btp\obj\Debug\Btp.Migrations.postdate.resources
-D:\Btp\Btp\obj\Debug\Btp.Migrations.postnolink.resources
 D:\Btp\Btp\obj\Debug\Btp.csproj.GenerateResource.Cache
 D:\Btp\Btp\obj\Debug\Btp.dll
 D:\Btp\Btp\obj\Debug\Btp.pdb
@@ -299,3 +294,6 @@ H:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
 H:\Btp\Btp\obj\Debug\Btp.csproj.GenerateResource.Cache
 E:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
 E:\Btp\Btp\obj\Debug\Btp.csproj.CoreCompileInputs.cache
+D:\Btp\Btp\obj\Debug\Btp.csprojAssemblyReference.cache
+D:\Btp\Btp\obj\Debug\Btp.Migrations.tables.resources
+D:\Btp\Btp\obj\Debug\Btp.csproj.CopyComplete
